@@ -13,16 +13,16 @@
   <div class="stage">
     <aside class="legend">
       <h1>大理小程序 UI</h1>
-      <p class="sub">真图原型 · TDesign · 可点击截图</p>
+      <p class="sub">25 屏可交互原型 · TDesign 主题化</p>
       <div class="nav-list" id="screen-nav"></div>
-      <p class="hint">右侧真机框可直接截进作品集。底栏、列表、详情已串成主路径。</p>
+      <p class="hint">点屏幕名直接跳转。主路径：启动 → 首页 → 景点 → 详情 → 加进行程 → 生成行程；文化与体验单同理。</p>
     </aside>
 
     <div class="phone">
       <div class="notch"></div>
 
       <!-- S01 启动 -->
-      <section class="screen splash no-tab" id="splash" data-name="S01 启动">
+      <section class="screen splash no-tab" id="splash" data-name="01 启动">
         <div class="splash-bg"><img src="./assets/hero-erhai-aerial.jpg" alt="" /></div>
         <div class="splash-top">
           <button class="skip" type="button" data-go="home">跳过</button>
@@ -40,7 +40,7 @@
       </section>
 
       <!-- S02 首页 -->
-      <section class="screen" id="home" data-name="S02 首页">
+      <section class="screen" id="home" data-name="02 首页">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay home-nav">
           <div class="brand">
@@ -62,7 +62,7 @@
           </div>
           <div class="strip-head">
             <b>值得先看</b>
-            <span data-go="exhibit" style="cursor:pointer">更多</span>
+            <span data-go="spots" style="cursor:pointer">更多</span>
           </div>
           <div class="strip">
             <button class="strip-card is-exhibit" type="button" data-go="exhibit">
@@ -86,10 +86,10 @@
       </section>
 
       <!-- 搜索 -->
-      <section class="screen no-tab" id="search" data-name="搜索">
+      <section class="screen no-tab" id="search" data-name="03 搜索">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Search</em><b>搜索</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -129,13 +129,19 @@
             <span class="arrow">›</span>
           </button>
         </div>
+        <div class="empty slim" id="search-empty" hidden>
+          <div class="logo"><img src="./assets/wamao.svg" alt="" /></div>
+          <p>没有找到<span id="search-empty-word"></span></p>
+          <i class="rule"></i>
+          <span class="desc">试试「洱海」「喜洲」「扎染」这些词</span>
+        </div>
       </section>
 
       <!-- S03 景点 -->
-      <section class="screen" id="spots" data-name="S03 景点列表">
+      <section class="screen" id="spots" data-name="04 景点">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><b>景点</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -151,25 +157,29 @@
         </button>
         <div class="zone-head">
           <b>按片区看</b>
-          <button type="button" id="zone-more">更多</button>
+          <button type="button" id="zone-all">全部</button>
         </div>
         <div class="zone-row">
-          <button class="zone-card" type="button" data-go="spot-erhai" style="--zone:#8eb3c8">
+          <button class="zone-card" type="button" data-zone-go="east" style="--zone:#8eb3c8">
             <img src="./assets/hero-erhai-aerial.jpg" alt="东岸洱海" />
             <b>东岸</b>
           </button>
-          <button class="zone-card" type="button" data-go="spot-xizhou" style="--zone:#c4b08f">
+          <button class="zone-card" type="button" data-zone-go="north" style="--zone:#c4b08f">
             <img src="./assets/spot-xizhou.jpg" alt="城北喜洲" />
             <b>城北</b>
           </button>
-          <button class="zone-card" type="button" data-go="spot-pagoda" style="--zone:#a3b59a">
+          <button class="zone-card" type="button" data-zone-go="west" style="--zone:#a3b59a">
             <img src="./assets/spot-pagoda.jpg" alt="城西三塔" />
             <b>城西</b>
           </button>
-          <button class="zone-card" type="button" data-go="spot-shuanglang" style="--zone:#8fb8b2">
+          <button class="zone-card" type="button" data-zone-go="far" style="--zone:#8fb8b2">
             <img src="./assets/spot-shuanglang.jpg" alt="北段双廊" class="pos-r" />
             <b>北段</b>
           </button>
+        </div>
+        <div class="zone-chipbar" id="zone-chipbar" hidden>
+          <span>已选片区：<b id="zone-chip-name">东岸</b></span>
+          <button type="button" id="zone-clear">清除</button>
         </div>
         <div class="tags" data-filter="spots">
           <button class="on" type="button" data-tag="all">全部</button>
@@ -178,7 +188,7 @@
           <button type="button" data-tag="古镇">古镇</button>
           <button type="button" data-tag="第一次">第一次</button>
         </div>
-        <p class="list-note">六处景点，右下角加号收进行程</p>
+        <p class="list-note">点右下角加号收进行程，看中就收</p>
         <div class="place-list" id="spot-list">
           <article class="place" data-zone="east" data-tags="半日 湖岸 第一次">
             <button class="place-go" type="button" data-go="spot-erhai">
@@ -265,6 +275,7 @@
             <button class="place-add" type="button" data-add="spot-bridge" aria-label="把拱桥加入行程">+</button>
           </article>
         </div>
+        <p class="filter-empty" id="spot-filter-empty" hidden>这个片区和条件下没有景点。换一个看看，或点上面「全部」。</p>
         <div class="also">
           <p>不只是景点</p>
           <div>
@@ -283,12 +294,12 @@
       </section>
 
       <!-- S04 洱海详情 -->
-      <section class="screen no-tab spot-page" id="spot-erhai" data-name="S04 洱海详情">
+      <section class="screen no-tab spot-page" id="spot-erhai" data-name="05 洱海">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="洱海" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -335,12 +346,12 @@
         </div>
       </section>
 
-      <section class="screen no-tab spot-page" id="spot-xizhou" data-name="喜洲详情">
+      <section class="screen no-tab spot-page" id="spot-xizhou" data-name="06 喜洲">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="喜洲古镇" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -387,12 +398,12 @@
         </div>
       </section>
 
-      <section class="screen no-tab spot-page" id="spot-shuanglang" data-name="双廊详情">
+      <section class="screen no-tab spot-page" id="spot-shuanglang" data-name="07 双廊">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="双廊" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -439,12 +450,12 @@
         </div>
       </section>
 
-      <section class="screen no-tab spot-page" id="spot-cangshan" data-name="苍山详情">
+      <section class="screen no-tab spot-page" id="spot-cangshan" data-name="08 苍山">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="苍山" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -471,6 +482,14 @@
             </ol>
           </section>
           <section class="spot-block">
+            <h2>现场</h2>
+            <div class="pics">
+              <img src="./assets/spot-cangshan.jpg" alt="苍山雪线" />
+              <img src="./assets/hero-erhai-aerial.jpg" alt="从洱海东岸看山" />
+              <img src="./assets/spot-pagoda.jpg" alt="三塔与山" />
+            </div>
+          </section>
+          <section class="spot-block">
             <h2>接下来去</h2>
             <div class="related">
               <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>山下看倒影</small></button>
@@ -483,12 +502,12 @@
         </div>
       </section>
 
-      <section class="screen no-tab spot-page" id="spot-pagoda" data-name="三塔详情">
+      <section class="screen no-tab spot-page" id="spot-pagoda" data-name="09 三塔">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="崇圣寺三塔" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -535,12 +554,12 @@
         </div>
       </section>
 
-      <section class="screen no-tab spot-page" id="spot-bridge" data-name="拱桥详情">
+      <section class="screen no-tab spot-page" id="spot-bridge" data-name="10 拱桥">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="spot-actions">
-            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn share-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
             <button class="icon-btn fav-btn" type="button" data-fav="湖上拱桥" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
           </span>
         </header>
@@ -579,10 +598,10 @@
         </div>
       </section>
       <!-- S05 文化 -->
-      <section class="screen" id="culture" data-name="S05 文化列表">
+      <section class="screen" id="culture" data-name="11 文化">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><b>文化</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -690,13 +709,14 @@
             <button class="cult-add" type="button" data-cult-add="culture-tower" aria-label="把楼阁加入体验">+</button>
           </article>
         </div>
+        <p class="filter-empty" id="cult-filter-empty" hidden>这个条件下没有体验。换一个标签看看。</p>
       </section>
 
       <!-- S06 扎染详情 -->
-      <section class="screen no-tab culture-page dye-page" id="culture-dye" data-name="S06 扎染详情">
+      <section class="screen no-tab culture-page dye-page" id="culture-dye" data-name="12 扎染">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -732,11 +752,11 @@
           </ol>
           <h4>去周城还是喜洲</h4>
           <div class="where-two">
-            <button type="button" data-go="culture-dye">
+            <div class="where-flat">
               <img src="./assets/craft-cloth.jpg" alt="周城" />
               <b>周城</b>
-              <span>作坊密，能看到整匹布和染缸。想看过程来这里。</span>
-            </button>
+              <span>作坊密，能看到整匹布和染缸。想看过程来这里。周城在喜洲以北，顺路可停。</span>
+            </div>
             <button type="button" data-go="spot-xizhou">
               <img src="./assets/spot-xizhou.jpg" alt="喜洲" />
               <b>喜洲</b>
@@ -763,10 +783,10 @@
         </div>
       </section>
 
-      <section class="screen no-tab culture-page" id="culture-wamao" data-name="瓦猫详情">
+      <section class="screen no-tab culture-page" id="culture-wamao" data-name="13 瓦猫">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -806,10 +826,10 @@
         </div>
       </section>
 
-      <section class="screen no-tab culture-page" id="culture-house" data-name="民居详情">
+      <section class="screen no-tab culture-page" id="culture-house" data-name="14 民居">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -862,10 +882,10 @@
         </div>
       </section>
 
-      <section class="screen no-tab culture-page" id="culture-tea" data-name="三道茶详情">
+      <section class="screen no-tab culture-page" id="culture-tea" data-name="15 三道茶">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -906,10 +926,10 @@
         </div>
       </section>
 
-      <section class="screen no-tab culture-page" id="culture-tower" data-name="楼阁详情">
+      <section class="screen no-tab culture-page" id="culture-tower" data-name="16 楼阁">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -949,10 +969,10 @@
         </div>
       </section>
 
-      <section class="screen no-tab culture-page" id="culture-fire" data-name="火把节详情">
+      <section class="screen no-tab culture-page" id="culture-fire" data-name="17 火把节">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay spot-nav">
-          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <span class="nav-slot"></span>
           <span class="nav-slot"></span>
         </header>
@@ -993,10 +1013,10 @@
       </section>
 
       <!-- 云上特展 -->
-      <section class="screen no-tab" id="exhibit" data-name="云上特展">
+      <section class="screen no-tab" id="exhibit" data-name="18 特展">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <header class="nav overlay">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <strong></strong>
           <span></span>
         </header>
@@ -1038,7 +1058,7 @@
       </section>
 
       <!-- S08 我的 -->
-      <section class="screen" id="mine" data-name="S08 我的">
+      <section class="screen" id="mine" data-name="19 我的">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <div class="mine-hero">
           <img src="./assets/hero-erhai-aerial.jpg" alt="" />
@@ -1066,17 +1086,7 @@
           <div class="block-head">
             <div><b>最近看过</b></div>
           </div>
-          <div class="related">
-            <button type="button" data-go="spot-erhai">
-              <img src="./assets/spot-erhai.jpg" alt="" /><b>洱海</b>
-            </button>
-            <button type="button" data-go="culture-dye">
-              <img src="./assets/craft-dye.jpg" alt="" /><b>扎染</b>
-            </button>
-            <button type="button" data-go="spot-shuanglang">
-              <img src="./assets/spot-shuanglang.jpg" alt="" /><b>双廊</b>
-            </button>
-          </div>
+          <div class="related" id="mine-recent"></div>
         </div>
         <div class="cells pad">
           <button type="button" data-go="about"><span>关于小程序</span><b>›</b></button>
@@ -1084,10 +1094,10 @@
       </section>
 
       <!-- S09 空状态 -->
-      <section class="screen no-tab" id="empty" data-name="S09 想去·空">
+      <section class="screen no-tab" id="empty" data-name="20 想去·空">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Saved</em><b>想去</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -1100,47 +1110,30 @@
         </div>
       </section>
 
-      <section class="screen no-tab" id="fav-list" data-name="想去·有数据">
+      <section class="screen no-tab" id="fav-list" data-name="21 想去">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Saved</em><b>想去</b></div>
           <span class="nav-slot"></span>
         </header>
         <div class="list" id="fav-items"></div>
       </section>
 
-      <section class="screen no-tab" id="history" data-name="浏览记录">
+      <section class="screen no-tab" id="history" data-name="22 足迹">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Trace</em><b>足迹</b></div>
           <span class="nav-slot"></span>
         </header>
-        <div class="list">
-          <button class="row" type="button" data-go="spot-erhai">
-            <img src="./assets/spot-erhai.jpg" alt="" />
-            <div class="grow"><b>洱海</b><p>今天看过</p></div>
-          </button>
-          <button class="row" type="button" data-go="culture-dye">
-            <img src="./assets/craft-dye.jpg" alt="" />
-            <div class="grow"><b>扎染</b><p>今天看过</p></div>
-          </button>
-          <button class="row" type="button" data-go="spot-shuanglang">
-            <img src="./assets/spot-shuanglang.jpg" alt="" />
-            <div class="grow"><b>双廊</b><p>今天看过</p></div>
-          </button>
-          <button class="row" type="button" data-go="culture-wamao">
-            <img src="./assets/craft-shelf.jpg" alt="" />
-            <div class="grow"><b>瓦猫</b><p>昨天看过</p></div>
-          </button>
-        </div>
+        <div class="list" id="history-list"></div>
       </section>
 
-      <section class="screen no-tab" id="about" data-name="关于">
+      <section class="screen no-tab" id="about" data-name="23 关于">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>About</em><b>关于</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -1158,10 +1151,10 @@
       </section>
 
       <!-- S10 加载 -->
-      <section class="screen" id="loading" data-name="S10 加载">
+      <section class="screen" id="loading" data-name="24 加载">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Spots</em><b>景点</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -1178,10 +1171,10 @@
         </div>
       </section>
 
-      <section class="screen" id="fail" data-name="S10 失败">
+      <section class="screen" id="fail" data-name="25 失败">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
-          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
           <div class="nav-title"><em>Spots</em><b>景点</b></div>
           <span class="nav-slot"></span>
         </header>
@@ -1227,7 +1220,7 @@
             <input class="trip-days" id="trip-days" type="range" min="1" max="30" value="1" aria-label="可用天数，一个月以内" />
             <div class="trip-span-scale"><i>1天</i><i>7天</i><i>14天</i><i>30天</i></div>
           </div>
-          <button class="btn-primary" id="trip-plan" type="button">AI 推荐行程</button>
+          <button class="btn-primary" id="trip-plan" type="button">生成行程</button>
           <div class="trip-result" id="trip-result"></div>
         </div>
         <div class="trip-view" id="trip-cal" hidden>
@@ -1272,7 +1265,7 @@
             <button type="button" id="cult-close">关闭</button>
           </header>
           <div class="trip-picks" id="cult-picks"></div>
-          <button class="btn-primary" id="cult-plan" type="button">AI 智能编排</button>
+          <button class="btn-primary" id="cult-plan" type="button">按地点编排</button>
           <div class="trip-result" id="cult-result"></div>
         </div>
       </aside>

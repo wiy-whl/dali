@@ -2733,3 +2733,82 @@ body.shot .phone {
 }
 body.shot .notch { display: none; }
 body.shot .hero.tall img { animation: none; }
+
+/* ===== 交互补全：片区筛选 / 空态 / 想去操作 / 弹层滚动锁 ===== */
+.zone-chipbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 2px;
+  padding: 8px 12px;
+  background: rgba(42, 134, 200, 0.08);
+  border: 1px solid rgba(42, 134, 200, 0.18);
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(23, 59, 99, 0.8);
+}
+.zone-chipbar b { color: var(--brand-7); font-weight: 600; }
+.zone-chipbar button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  color: var(--brand-6);
+  font-size: 12px;
+}
+
+.filter-empty {
+  margin: 6px 0 10px;
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 12.5px;
+  line-height: 1.6;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--elev-1);
+}
+
+.empty.slim { min-height: 0; padding: 52px 32px 24px; }
+.empty.slim .logo { width: 54px; }
+
+/* 想去列表：整行可点开，右侧可移除 */
+.row.static { padding: 0; overflow: hidden; }
+.fav-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+.fav-del {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 10px 14px 10px 0;
+  color: var(--text-3);
+  font-size: 12px;
+  font-family: inherit;
+}
+.fav-del:hover { color: var(--error); }
+
+/* 主按钮的「已加入」态 */
+.btn-primary.on { background: var(--brand-6); }
+
+/* 弹层打开时锁住背景滚动 */
+body.sheet-open .screen.active { overflow: hidden; }
+
+/* 启动 / 加载 / 失败页不悬浮行程球 */
+.phone:has(#splash.active) .trip-fab,
+.phone:has(#loading.active) .trip-fab,
+.phone:has(#fail.active) .trip-fab { display: none; }
+
+/* 扎染页里不可点的地点卡，与 .where-two button 同观感 */
+.where-flat { padding: 0 0 10px; overflow: hidden; background: #fff; border-radius: 12px; }

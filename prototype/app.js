@@ -11,35 +11,73 @@
     崇圣寺三塔: "./assets/spot-pagoda.jpg",
     湖上拱桥: "./assets/spot-bridge.jpg",
   };
+  const favScreen = {
+    洱海: "spot-erhai",
+    喜洲古镇: "spot-xizhou",
+    双廊: "spot-shuanglang",
+    苍山: "spot-cangshan",
+    崇圣寺三塔: "spot-pagoda",
+    湖上拱桥: "spot-bridge",
+  };
   const tabs = { home: "home", spots: "spots", culture: "culture", mine: "mine" };
+  const zoneName = { east: "东岸", north: "城北", west: "城西", far: "北段", south: "城南" };
+  const visitMeta = {
+    "spot-erhai": { name: "洱海", img: "./assets/spot-erhai.jpg" },
+    "spot-xizhou": { name: "喜洲古镇", img: "./assets/spot-xizhou.jpg" },
+    "spot-shuanglang": { name: "双廊", img: "./assets/spot-shuanglang.jpg" },
+    "spot-cangshan": { name: "苍山", img: "./assets/spot-cangshan.jpg" },
+    "spot-pagoda": { name: "崇圣寺三塔", img: "./assets/spot-pagoda.jpg" },
+    "spot-bridge": { name: "湖上拱桥", img: "./assets/spot-bridge.jpg" },
+    "culture-dye": { name: "扎染", img: "./assets/craft-dye.jpg" },
+    "culture-wamao": { name: "瓦猫", img: "./assets/craft-shelf.jpg" },
+    "culture-house": { name: "白族民居", img: "./assets/culture-town.jpg" },
+    "culture-tea": { name: "三道茶", img: "./assets/craft-tea.jpg" },
+    "culture-fire": { name: "火把节", img: "./assets/craft-fire.jpg" },
+    "culture-tower": { name: "古城楼阁", img: "./assets/culture-temple.jpg" },
+    exhibit: { name: "云上特展", img: "./assets/exhibit-tower.jpg" },
+  };
+  const recent = [];
 
   function showToast(text) {
     toast.textContent = text;
     toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 1500);
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => toast.classList.remove("show"), 1500);
   }
 
   function refreshFavUI() {
     const n = saved.size;
-    if (favCount) favCount.textContent = n ? n + " ›" : "还没有 ›";
+    if (favCount) favCount.textContent = n ? n + " 个 ›" : "还没有 ›";
     document.querySelectorAll(".fav-btn").forEach((btn) => {
-      const key = btn.getAttribute("data-fav");
-      btn.classList.toggle("on", saved.has(key));
+      btn.classList.toggle("on", saved.has(btn.getAttribute("data-fav")));
+    });
+    document.querySelectorAll(".add-fav").forEach((btn) => {
+      const on = saved.has(btn.getAttribute("data-fav"));
+      btn.classList.toggle("on", on);
+      btn.textContent = on ? "已加入想去 · 再点取消" : "加入想去";
     });
     const box = document.getElementById("fav-items");
     if (!box) return;
-    box.innerHTML = "";
-    saved.forEach((name) => {
-      const row = document.createElement("div");
-      row.className = "row static";
-      row.innerHTML =
-        '<img src="' +
-        (thumbs[name] || "./assets/spot-erhai.jpg") +
-        '" alt="" /><div class="grow"><b>' +
-        name +
-        "</b><p>已加入想去</p></div>";
-      box.appendChild(row);
-    });
+    if (!saved.size) {
+      box.innerHTML = '<p class="trip-empty">都取消掉了。去首页再逛逛。</p>';
+      return;
+    }
+    box.innerHTML = [...saved]
+      .map((name) => {
+        return (
+          '<div class="row static"><button class="fav-main" type="button" data-go="' +
+          (favScreen[name] || "home") +
+          '"><img src="' +
+          (thumbs[name] || "./assets/spot-erhai.jpg") +
+          '" alt="" /><div class="grow"><b>' +
+          name +
+          "</b><p>已加入想去</p></div></button>" +
+          '<button class="fav-del" type="button" data-unfav="' +
+          name +
+          '">移除</button></div>'
+        );
+      })
+      .join("");
   }
 
   function syncTab(id) {
@@ -53,16 +91,68 @@
     });
   }
 
-  function go(id) {
+  /* ---- 返回栈：详情页返回时回到真正来时的地方 ---- */
+  const stack = [];
+  function go(id, keepStack) {
     const next = document.getElementById(id);
     if (!next) return;
+    const cur = document.querySelector(".screen.active");
+    if (!keepStack && cur && cur.id !== id) {
+      stack.push(cur.id);
+      if (stack.length > 30) stack.shift();
+    }
     document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
     next.classList.add("active");
     next.scrollTo(0, 0);
     syncTab(id);
-    if (id === "splash") tabbar.style.display = "none";
-    if (location.hash.slice(1) !== id) {
-      history.replaceState(null, "", "#" + id);
+    if (location.hash.slice(1) !== id) history.replaceState(null, "", "#" + id);
+    if (visitMeta[id]) {
+      const at = recent.indexOf(id);
+      if (at >= 0) recent.splice(at, 1);
+      recent.unshift(id);
+      if (recent.length > 8) recent.pop();
+      renderRecent();
+    }
+  }
+
+  function back(fallback) {
+    const prev = stack.pop();
+    go(prev || fallback, true);
+  }
+
+  function renderRecent() {
+    const box = document.getElementById("history-list");
+    if (box) {
+      box.innerHTML = recent.length
+        ? recent
+            .map((id, i) => {
+              const m = visitMeta[id];
+              return (
+                '<button class="row" type="button" data-go="' +
+                id +
+                '"><img src="' +
+                m.img +
+                '" alt="" /><div class="grow"><b>' +
+                m.name +
+                "</b><p>" +
+                (i === 0 ? "今天看过" : "刚刚之前") +
+                "</p></div><span class=\"arrow\">›</span></button>"
+              );
+            })
+            .join("")
+        : '<p class="trip-empty">还没有足迹。逛过的地方会出现在这里。</p>';
+    }
+    const mine = document.getElementById("mine-recent");
+    if (mine) {
+      const top = recent.slice(0, 3);
+      mine.innerHTML = top.length
+        ? top
+            .map((id) => {
+              const m = visitMeta[id];
+              return '<button type="button" data-go="' + id + '"><img src="' + m.img + '" alt="" /><b>' + m.name + "</b></button>";
+            })
+            .join("")
+        : '<p class="trip-empty">逛过的地方会出现在这里。</p>';
     }
   }
 
@@ -70,7 +160,7 @@
     if (!name) return;
     if (saved.has(name)) {
       saved.delete(name);
-      showToast("已取消");
+      showToast("已从想去移除");
     } else {
       saved.add(name);
       showToast("已加入想去");
@@ -78,6 +168,82 @@
     refreshFavUI();
   }
 
+  /* ---- 列表筛选：标签 + 片区，统一计算并给出空态 ---- */
+  const activeTag = { spots: "all", culture: "all" };
+  let zoneFilter = "";
+
+  function applyFilters(scope) {
+    const root = document.getElementById(scope === "spots" ? "spots" : "culture");
+    if (!root) return;
+    const tag = activeTag[scope];
+    let shown = 0;
+    root.querySelectorAll("[data-tags]").forEach((row) => {
+      const tags = row.getAttribute("data-tags") || "";
+      const okTag = tag === "all" || tags.includes(tag);
+      const okZone = scope !== "spots" || !zoneFilter || row.getAttribute("data-zone") === zoneFilter;
+      const show = okTag && okZone;
+      row.style.display = show ? "" : "none";
+      if (show) shown += 1;
+    });
+    const empty = document.getElementById(scope === "spots" ? "spot-filter-empty" : "cult-filter-empty");
+    if (empty) empty.hidden = shown > 0;
+    const bar = document.getElementById("zone-chipbar");
+    if (bar && scope === "spots") {
+      bar.hidden = !zoneFilter;
+      const label = document.getElementById("zone-chip-name");
+      if (label) label.textContent = zoneName[zoneFilter] || "";
+    }
+  }
+
+  function setZoneFilter(zone, scroll) {
+    zoneFilter = zoneFilter === zone ? "" : zone;
+    applyFilters("spots");
+    if (scroll) document.getElementById("spot-list").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
+  function toggleSearchEmpty() {
+    const input = document.getElementById("search-input");
+    const empty = document.getElementById("search-empty");
+    if (!input || !empty) return;
+    const q = input.value.trim();
+    let shown = 0;
+    document.querySelectorAll("#search-result .row").forEach((row) => {
+      const show = !q || row.innerText.includes(q);
+      row.style.display = show ? "flex" : "none";
+      if (show) shown += 1;
+    });
+    const word = document.getElementById("search-empty-word");
+    if (word) word.textContent = "“" + q + "”";
+    empty.hidden = shown > 0;
+  }
+
+  function lockSheet() {
+    const open = !document.getElementById("trip-sheet").hidden || !document.getElementById("cult-sheet").hidden;
+    document.body.classList.toggle("sheet-open", open);
+  }
+
+  function openTrip(open) {
+    document.getElementById("trip-mask").hidden = !open;
+    document.getElementById("trip-sheet").hidden = !open;
+    if (open) showTripView("main");
+    lockSheet();
+  }
+
+  function showTripView(name) {
+    ["main", "cal", "loc"].forEach((id) => {
+      document.getElementById("trip-" + id).hidden = id !== name;
+    });
+    if (name === "cal") renderCal();
+    if (name === "loc") renderLoc();
+  }
+
+  function openCult(open) {
+    document.getElementById("cult-mask").hidden = !open;
+    document.getElementById("cult-sheet").hidden = !open;
+    lockSheet();
+  }
+
+  /* ---- 行程数据与排程 ---- */
   const catalog = {
     "spot-erhai": { name: "洱海", hours: 3.5, zone: "east", where: "东岸 · 才村一带" },
     "spot-xizhou": { name: "喜洲古镇", hours: 4, zone: "north", where: "城北" },
@@ -158,6 +324,7 @@
       const on = trip.includes(btn.getAttribute("data-add"));
       btn.classList.toggle("on", on);
       btn.textContent = on ? "✓" : "+";
+      btn.setAttribute("aria-label", on ? "从行程移除" : "加入行程");
     });
     if (!box) return;
     if (!trip.length) {
@@ -180,20 +347,6 @@
         );
       })
       .join("");
-  }
-
-  function openTrip(open) {
-    document.getElementById("trip-mask").hidden = !open;
-    document.getElementById("trip-sheet").hidden = !open;
-    if (open) showTripView("main");
-  }
-
-  function showTripView(name) {
-    ["main", "cal", "loc"].forEach((id) => {
-      document.getElementById("trip-" + id).hidden = id !== name;
-    });
-    if (name === "cal") renderCal();
-    if (name === "loc") renderLoc();
   }
 
   function paintPrefs() {
@@ -386,8 +539,9 @@
       if (btn.classList.contains("cult-add")) {
         btn.classList.toggle("on", on);
         btn.textContent = on ? "✓" : "+";
+        btn.setAttribute("aria-label", on ? "从体验单移除" : "加入体验单");
       } else {
-        btn.textContent = on ? "已加入体验" : "加入体验";
+        btn.textContent = on ? "已加入体验 · 再点取消" : "加入体验";
       }
     });
     if (!box) return;
@@ -411,11 +565,6 @@
         );
       })
       .join("");
-  }
-
-  function openCult(open) {
-    document.getElementById("cult-mask").hidden = !open;
-    document.getElementById("cult-sheet").hidden = !open;
   }
 
   function planCult() {
@@ -445,13 +594,19 @@
     out.innerHTML = html;
   }
 
+  /* ---- 全局点击分发 ---- */
   document.body.addEventListener("click", (e) => {
     const cultAdd = e.target.closest("[data-cult-add]");
     if (cultAdd) {
       const id = cultAdd.getAttribute("data-cult-add");
-      if (!cult.includes(id)) {
+      const at = cult.indexOf(id);
+      if (at >= 0) {
+        cult.splice(at, 1);
+        showToast("已从体验单移除");
+        document.getElementById("cult-result").innerHTML = "";
+      } else {
         cult.push(id);
-        showToast("已加入体验");
+        showToast("已加入体验单");
       }
       syncCult();
       return;
@@ -476,14 +631,25 @@
       planCult();
       return;
     }
+    const unfav = e.target.closest("[data-unfav]");
+    if (unfav) {
+      toggleFav(unfav.getAttribute("data-unfav"));
+      if (!saved.size && document.getElementById("fav-list").classList.contains("active")) go("empty", true);
+      return;
+    }
     const add = e.target.closest("[data-add]");
     if (add) {
       const id = add.getAttribute("data-add");
-      if (!trip.includes(id)) {
+      const at = trip.indexOf(id);
+      if (at >= 0) {
+        trip.splice(at, 1);
+        showToast("已从行程移除");
+      } else {
         trip.push(id);
         showToast("已加入行程");
       }
       syncTrip();
+      document.getElementById("trip-result").innerHTML = "";
       return;
     }
     const remove = e.target.closest("[data-remove]");
@@ -546,16 +712,52 @@
       planTrip();
       return;
     }
-    if (e.target.closest("#zone-more")) {
-      document.getElementById("spot-list").scrollIntoView({ block: "start" });
+    const zoneCard = e.target.closest("[data-zone-go]");
+    if (zoneCard) {
+      setZoneFilter(zoneCard.getAttribute("data-zone-go"), true);
+      return;
+    }
+    if (e.target.closest("#zone-clear")) {
+      zoneFilter = "";
+      applyFilters("spots");
+      return;
+    }
+    if (e.target.closest("#zone-all")) {
+      zoneFilter = "";
+      applyFilters("spots");
+      document.getElementById("spot-list").scrollIntoView({ block: "start", behavior: "smooth" });
+      return;
+    }
+    if (e.target.closest(".share-btn")) {
+      const link = location.href.split("#")[0] + "#" + (document.querySelector(".screen.active") || {}).id;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard
+          .writeText(link)
+          .then(() => showToast("链接已复制，发给朋友就能打开"))
+          .catch(() => showToast("把这个页面的链接发给朋友即可"));
+      } else {
+        showToast("把这个页面的链接发给朋友即可");
+      }
+      return;
+    }
+    const backBtn = e.target.closest("[data-back]");
+    if (backBtn) {
+      back(backBtn.getAttribute("data-back"));
       return;
     }
     const goBtn = e.target.closest("[data-go]");
     if (goBtn && !goBtn.classList.contains("fav-btn") && !goBtn.classList.contains("add-fav")) {
       go(goBtn.getAttribute("data-go"));
+      return;
     }
     const fav = e.target.closest(".fav-btn, .add-fav");
     if (fav) toggleFav(fav.getAttribute("data-fav"));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!document.getElementById("cult-sheet").hidden) openCult(false);
+    else if (!document.getElementById("trip-sheet").hidden) openTrip(false);
   });
 
   document.getElementById("open-fav-list")?.addEventListener("click", () => {
@@ -568,21 +770,19 @@
       if (!btn) return;
       group.querySelectorAll("button").forEach((b) => b.classList.remove("on"));
       btn.classList.add("on");
-      const tag = btn.getAttribute("data-tag");
-      group.parentElement.querySelectorAll("[data-tags]").forEach((row) => {
-        const tags = row.getAttribute("data-tags") || "";
-        const show = tag === "all" || tags.includes(tag);
-        row.style.display = show ? "" : "none";
-      });
+      const scope = group.getAttribute("data-filter");
+      activeTag[scope] = btn.getAttribute("data-tag");
+      applyFilters(scope);
     });
   });
 
   const input = document.getElementById("search-input");
-  input?.addEventListener("input", () => {
-    const q = input.value.trim();
-    document.querySelectorAll("#search-result .row").forEach((row) => {
-      row.style.display = !q || row.innerText.includes(q) ? "flex" : "none";
-    });
+  input?.addEventListener("input", toggleSearchEmpty);
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      input.value = "";
+      toggleSearchEmpty();
+    }
   });
 
   const nav = document.getElementById("screen-nav");
@@ -611,6 +811,9 @@
   syncCult();
   paintPrefs();
   renderCal();
+  renderRecent();
+  applyFilters("spots");
+  applyFilters("culture");
   const start = location.hash.slice(1);
   go(document.getElementById(start) ? start : "splash");
 })();

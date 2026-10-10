@@ -189,12 +189,21 @@ h2.sec{font-family:var(--disp);font-weight:400;font-size:clamp(34px,4.6vw,58px);
 .wire{background:var(--card);border-radius:26px;padding:clamp(22px,3vw,40px);box-shadow:0 30px 60px -30px rgba(23,59,99,.3)}
 .wire svg{width:100%;height:auto;display:block}
 .lay-rules{display:flex;flex-direction:column;gap:14px}
+.wire-cap{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px dashed var(--line)}
+.wire-cap span:first-child{font-size:13px;letter-spacing:4px;color:var(--ink);font-weight:500}
+.wire-cap .lat{font-family:var(--latin);font-size:12px;letter-spacing:2px;color:var(--text-3)}
 .rule{display:flex;gap:18px;background:var(--card);border-radius:18px;padding:22px 24px;border:1px solid rgba(220,228,232,.7)}
 .rule .no{font-family:var(--latin);font-size:26px;color:var(--sea);font-weight:600;line-height:1;min-width:40px}
 .rule b{font-size:15px;letter-spacing:2px;color:var(--ink);display:block;margin-bottom:6px}
 .rule p{font-size:13px;line-height:1.9;color:var(--text-2)}
-.tokens{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tokens span{font-family:var(--latin);font-size:12px;letter-spacing:1px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 13px;color:var(--text-2)}
+.tokens{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.tokens span{display:inline-flex;align-items:center;gap:9px;font-family:var(--latin);font-size:12.5px;letter-spacing:1.5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;color:var(--text-2);box-shadow:0 12px 26px -16px rgba(23,59,99,.35);transition:.25s}
+.tokens span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sea)}
+.tokens span:nth-child(2)::before{background:var(--ink)}
+.tokens span:nth-child(3)::before{background:var(--clay)}
+.tokens span:nth-child(4)::before{background:var(--clay-2)}
+.tokens span:nth-child(5)::before{background:var(--ink-deep)}
+.tokens span:hover{transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(23,59,99,.45)}
 
 /* ============ 07 设计目标（挂签） ============ */
 #goals{background:linear-gradient(180deg,#0f2a4a,#143455 55%,#173b63);color:#fff;padding:clamp(84px,10vw,150px) 0 clamp(90px,11vw,160px);overflow:hidden}
@@ -543,25 +552,88 @@ footer{margin-top:clamp(70px,9vw,120px);background:var(--ink);color:#fff;padding
     <div class="sec-sub rev d1">一套 8pt 栅格 + 卡片语言，撑起 20+ 屏的一致</div>
     <div class="lay-grid">
       <div class="wire rev d1">
-        <svg viewBox="0 0 520 400" fill="none">
-          <rect x="150" y="10" width="220" height="380" rx="28" fill="#F3F5F1" stroke="#173B63" stroke-width="2"/>
-          <rect x="150" y="10" width="220" height="88" rx="28" fill="#173B63"/>
-          <rect x="150" y="70" width="220" height="28" fill="#173B63"/>
-          <text x="170" y="52" font-size="13" fill="#E8F1F8" font-family="serif" letter-spacing="4">风起的时候</text>
-          <rect x="166" y="118" width="91" height="74" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
-          <rect x="263" y="118" width="91" height="74" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
-          <rect x="166" y="208" width="188" height="86" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
-          <rect x="166" y="310" width="188" height="60" rx="30" fill="#2A86C8"/>
-          <text x="236" y="346" font-size="12" fill="#fff" text-anchor="middle" letter-spacing="3">开始逛</text>
-          <line x1="150" y1="110" x2="370" y2="110" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="166" y1="10" x2="166" y2="390" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="354" y1="10" x2="354" y2="390" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
-          <text x="16" y="120" font-size="11" fill="#71322D" letter-spacing="1">内容安全区 16px</text>
-          <text x="16" y="140" font-size="11" fill="#71322D" letter-spacing="1">页边距 16 / 卡距 8</text>
-          <text x="16" y="230" font-size="11" fill="#2A86C8" letter-spacing="1">8pt 栅格</text>
-          <text x="16" y="250" font-size="11" fill="#2A86C8" letter-spacing="1">卡片圆角 12–16</text>
-          <text x="16" y="330" font-size="11" fill="#173B63" letter-spacing="1">主按钮全宽 52px</text>
+        <svg viewBox="0 0 560 424" fill="none" role="img" aria-label="首页标注线框">
+          <defs>
+            <linearGradient id="lh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F2A4A"/><stop offset="1" stop-color="#1B5E93"/></linearGradient>
+            <linearGradient id="lp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A86C8"/><stop offset=".55" stop-color="#7FB2D6"/><stop offset="1" stop-color="#C9DFEF"/></linearGradient>
+            <linearGradient id="lp2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9CC4E0"/><stop offset="1" stop-color="#DCEAF4"/></linearGradient>
+            <linearGradient id="lc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E93D6"/><stop offset="1" stop-color="#1D6FA6"/></linearGradient>
+            <pattern id="g8" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" stroke="#2A86C8" stroke-opacity=".09" fill="none"/></pattern>
+            <filter id="phs" x="-30%" y="-20%" width="160%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#173B63" flood-opacity=".16"/></filter>
+          </defs>
+
+          <!-- 机身 -->
+          <g filter="url(#phs)"><rect x="196" y="14" width="216" height="396" rx="30" fill="#FBFCF9"/></g>
+
+          <!-- 8pt 栅格（内容区） -->
+          <rect x="212" y="108" width="184" height="288" fill="url(#g8)"/>
+
+          <!-- 安全区辅助线 -->
+          <g stroke="#71322D" stroke-opacity=".45" stroke-width="1" stroke-dasharray="3 4">
+            <line x1="212" y1="100" x2="212" y2="392"/><line x1="396" y1="100" x2="396" y2="392"/><line x1="204" y1="108" x2="404" y2="108"/>
+          </g>
+
+          <!-- 头图 -->
+          <path d="M196 106 V44 a30 30 0 0 1 30-30 h156 a30 30 0 0 1 30 30 v62 z" fill="url(#lh)"/>
+          <circle cx="382" cy="24" r="34" fill="#fff" opacity=".08"/><circle cx="406" cy="72" r="22" fill="#fff" opacity=".06"/>
+          <text x="214" y="36" font-size="8" fill="#fff" opacity=".55" letter-spacing="1" style="font-family:var(--latin)">9:41</text>
+          <text x="214" y="66" font-size="16" fill="#E8F1F8" letter-spacing="7" style="font-family:var(--serif)">风起的时候</text>
+          <text x="215" y="86" font-size="8" fill="#9FC5E4" letter-spacing="3" style="font-family:var(--latin)">DALI · OPEN THE BLUE</text>
+
+          <!-- 卡片 -->
+          <rect x="212" y="124" width="88" height="72" rx="12" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="218" y="130" width="76" height="34" rx="8" fill="url(#lp)"/>
+          <rect x="218" y="172" width="52" height="5" rx="2.5" fill="#D8E2E8"/><rect x="218" y="182" width="34" height="5" rx="2.5" fill="#E8EEF2"/>
+          <rect x="308" y="124" width="88" height="72" rx="12" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="314" y="130" width="76" height="34" rx="8" fill="url(#lp2)"/>
+          <rect x="314" y="172" width="52" height="5" rx="2.5" fill="#D8E2E8"/><rect x="314" y="182" width="34" height="5" rx="2.5" fill="#E8EEF2"/>
+          <rect x="212" y="212" width="184" height="80" rx="16" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="220" y="220" width="64" height="64" rx="10" fill="url(#lp)"/>
+          <rect x="294" y="230" width="82" height="6" rx="3" fill="#D8E2E8"/><rect x="294" y="244" width="64" height="6" rx="3" fill="#E8EEF2"/><rect x="294" y="258" width="44" height="6" rx="3" fill="#EDF2F5"/>
+
+          <!-- 主按钮 -->
+          <rect x="212" y="322" width="184" height="52" rx="26" fill="url(#lc)"/>
+          <text x="304" y="353" text-anchor="middle" font-size="13" fill="#fff" letter-spacing="8" style="font-family:var(--sans)">开始逛</text>
+          <rect x="238" y="392" width="132" height="4" rx="2" fill="#E3EAEF"/>
+          <rect x="196" y="14" width="216" height="396" rx="30" stroke="#173B63" stroke-opacity=".55" stroke-width="1.5"/>
+
+          <!-- 右侧工程标注 -->
+          <g stroke="#173B63" stroke-opacity=".35" stroke-width="1">
+            <line x1="416" y1="14" x2="416" y2="106"/><line x1="411" y1="14" x2="421" y2="14"/><line x1="411" y1="106" x2="421" y2="106"/>
+          </g>
+          <text x="430" y="64" font-size="12" fill="rgba(23,59,99,.55)" style="font-family:var(--latin)">92</text>
+          <path d="M380 212 A16 16 0 0 1 396 228" stroke="#2A86C8" stroke-width="1.2"/>
+          <circle cx="396" cy="228" r="2" fill="#2A86C8"/>
+          <text x="424" y="224" font-size="11" fill="#2A86C8" style="font-family:var(--latin)">R 12–16</text>
+          <g stroke="#173B63" stroke-opacity=".45" stroke-width="1">
+            <line x1="416" y1="322" x2="416" y2="374"/><line x1="411" y1="322" x2="421" y2="322"/><line x1="411" y1="374" x2="421" y2="374"/>
+          </g>
+          <text x="430" y="344" font-size="14" fill="#173B63" style="font-family:var(--latin)">52</text>
+          <text x="430" y="360" font-size="8" fill="rgba(23,59,99,.45)" letter-spacing="2" style="font-family:var(--latin)">HEIGHT</text>
+
+          <!-- 左侧规格注记 -->
+          <circle cx="28" cy="118" r="3" fill="#71322D"/>
+          <text x="42" y="115" font-size="12" fill="#71322D" letter-spacing="1" style="font-family:var(--sans)">内容安全区 16px</text>
+          <text x="42" y="133" font-size="12" fill="rgba(23,59,99,.55)" letter-spacing="1" style="font-family:var(--sans)">页边距 16 · 卡距 8</text>
+          <text x="42" y="149" font-size="9" fill="rgba(113,50,45,.55)" letter-spacing="2" style="font-family:var(--latin)">SAFE AREA</text>
+          <path d="M158 112 C 180 108, 194 108, 206 108" stroke="#71322D" stroke-opacity=".4"/><circle cx="209" cy="108" r="2.2" fill="#71322D" fill-opacity=".7"/>
+
+          <circle cx="28" cy="196" r="3" fill="#2A86C8"/>
+          <text x="42" y="193" font-size="12" fill="#2A86C8" letter-spacing="1" style="font-family:var(--sans)">8pt 栅格</text>
+          <text x="42" y="211" font-size="9" fill="rgba(42,134,200,.6)" letter-spacing="2" style="font-family:var(--latin)">GRID · SPACE ×1/2/3</text>
+          <path d="M130 192 C 164 184, 190 176, 206 169" stroke="#2A86C8" stroke-opacity=".4"/><circle cx="209" cy="168" r="2.2" fill="#2A86C8" fill-opacity=".7"/>
+
+          <circle cx="28" cy="262" r="3" fill="#2A86C8"/>
+          <text x="42" y="259" font-size="12" fill="#2A86C8" letter-spacing="1" style="font-family:var(--sans)">卡片圆角 12–16</text>
+          <text x="42" y="277" font-size="9" fill="rgba(42,134,200,.6)" letter-spacing="2" style="font-family:var(--latin)">RADIUS</text>
+          <path d="M140 258 C 168 256, 190 254, 206 252" stroke="#2A86C8" stroke-opacity=".4"/><circle cx="209" cy="252" r="2.2" fill="#2A86C8" fill-opacity=".7"/>
+
+          <circle cx="28" cy="348" r="3" fill="#173B63"/>
+          <text x="42" y="345" font-size="12" fill="#173B63" letter-spacing="1" style="font-family:var(--sans)">主按钮全宽 52px</text>
+          <text x="42" y="363" font-size="9" fill="rgba(23,59,99,.5)" letter-spacing="2" style="font-family:var(--latin)">FULL-WIDTH CTA</text>
+          <path d="M164 344 C 184 344, 196 346, 206 348" stroke="#173B63" stroke-opacity=".4"/><circle cx="209" cy="348" r="2.2" fill="#173B63" fill-opacity=".7"/>
         </svg>
+        <div class="wire-cap"><span>首页 · 标注线框</span><span class="lat">HOME SPEC · 375 × 812</span></div>
       </div>
       <div class="lay-rules">
         <div class="rule rev"><div class="no">a</div><div><b>符号服务功能，不做满屏装饰</b><p>瓦猫只在 Logo、空状态、加载里出现；扎染只做氛围层。装饰永远给信息让路。</p></div></div>

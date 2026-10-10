@@ -7,8 +7,9 @@
 
 | 入口 | 链接 |
 | --- | --- |
-| 作品集（含全屏原型模式） | https://dali-portfolio.app.workbuddy.host/ |
-| 可交互原型直链 | https://dali-portfolio.app.workbuddy.host/prototype/index.html |
+| 作品集（GitHub Pages，推送自动更新） | https://wiy-whl.github.io/dali/ |
+| 可交互原型直链 | https://wiy-whl.github.io/dali/prototype/index.html |
+| 作品集（WorkBuddy 托管镜像） | https://dali-portfolio.app.workbuddy.host/ |
 
 纯静态站点，无构建步骤，克隆下来即可本地打开。
 
@@ -39,10 +40,11 @@ python -m http.server 8080     # 或：npx serve .
 
 ## 部署
 
-### GitHub Pages（备选，推荐用于长期展示）
+### GitHub Pages（已开启 · 推荐）
 
-仓库 → **Settings → Pages → Source 选 `Deploy from a branch` → 分支 `main`、目录 `/(root)` → Save**。
-稍等片刻即可访问：https://wiy-whl.github.io/dali/
+已配置为 **从 `main` 分支根目录发布**，每次 `git push` 后自动更新：https://wiy-whl.github.io/dali/
+
+如需改为其他方式：仓库 **Settings → Pages → Source**，可选 `Deploy from a branch`（`main` / `(root)`）或 `GitHub Actions`。
 
 ### Vercel
 

@@ -9,9 +9,16 @@
 | --- | --- |
 | 作品集（GitHub Pages，推送自动更新） | https://wiy-whl.github.io/dali/ |
 | 可交互原型直链 | https://wiy-whl.github.io/dali/prototype/index.html |
+| PDF 版（16 页横向，可直接发送） | [傅怡-大理小程序作品集.pdf](./傅怡-大理小程序作品集.pdf) |
 | 作品集（WorkBuddy 托管镜像） | https://dali-portfolio.app.workbuddy.host/ |
 
 纯静态站点，无构建步骤，克隆下来即可本地打开。
+
+### 关于 PDF 导出
+
+仓库根目录的 `傅怡-大理小程序作品集.pdf` 由 Chrome 无头打印生成（页面内置 `@media print` 排版）：
+横向 16:11 页面、每章独立起页、字体全量嵌入、滚动动画全部展开、原型区以静态截图替代 iframe。
+重新导出：用 Chrome 打开 `index.html` → 打印 → 目标选「另存为 PDF」→ 勾选「背景图形」→ 边距「无」即可。
 
 ## 目录结构
 

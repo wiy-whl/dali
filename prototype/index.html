@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>大理 · 文化信息体验</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="stage">
+    <aside class="legend">
+      <h1>大理小程序 UI</h1>
+      <p class="sub">真图原型 · TDesign · 可点击截图</p>
+      <div class="nav-list" id="screen-nav"></div>
+      <p class="hint">右侧真机框可直接截进作品集。底栏、列表、详情已串成主路径。</p>
+    </aside>
+
+    <div class="phone">
+      <div class="notch"></div>
+
+      <!-- S01 启动 -->
+      <section class="screen splash no-tab" id="splash" data-name="S01 启动">
+        <div class="splash-bg"><img src="./assets/hero-erhai-aerial.jpg" alt="" /></div>
+        <div class="splash-top">
+          <button class="skip" type="button" data-go="home">跳过</button>
+        </div>
+        <div class="splash-body">
+          <div class="logo"><img src="./assets/wamao.svg" alt="" /></div>
+          <em class="kicker">Erhai · Cangshan</em>
+          <h2>大理</h2>
+          <i class="rule"></i>
+          <p>苍洱之间，慢慢逛</p>
+        </div>
+        <div class="splash-cta">
+          <button class="btn-ghost" type="button" data-go="home">开始逛</button>
+        </div>
+      </section>
+
+      <!-- S02 首页 -->
+      <section class="screen" id="home" data-name="S02 首页">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay home-nav">
+          <div class="brand">
+            <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 19.5 10.2 9.8 14.8 14.2 18.6 8.5 27 19.5" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 22.2c2.4-1.6 4.8-1.6 7.2 0s4.8 1.6 7.2 0 4.8-1.6 7.6 0" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" opacity=".88"/><path d="M5 25.2c2.2-1.2 4.4-1.2 6.6 0s4.4 1.2 6.6 0 4.4-1.2 7.3 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".5"/></svg></span>
+            <span class="brand-type"><b class="brand-wordmark">大理</b><em>DALI</em></span>
+          </div>
+          <button class="icon-btn" type="button" data-go="search" aria-label="搜索"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.2"/><path d="m15.6 15.6 4.4 4.4"/><path d="M8.4 12.2c1.1-.7 2.3-.4 3.2.3"/></svg></button>
+        </header>
+        <div class="hero tall home-poster">
+          <img src="./assets/hero-erhai-aerial.jpg" alt="航拍双廊：白墙村落伸进洱海，岸边是秋天的红杉" />
+          <div class="poster-title">
+            <span class="poster-slogan">风起的时候</span>
+          </div>
+        </div>
+        <div class="home-board">
+          <div class="entry-row">
+            <button type="button" data-go="spots"><i aria-hidden="true">景</i><span><b>景点</b><small>去哪逛</small></span></button>
+            <button type="button" data-go="culture"><i aria-hidden="true">文</i><span><b>文化</b><small>看懂，带走</small></span></button>
+          </div>
+          <div class="strip-head">
+            <b>值得先看</b>
+            <span data-go="exhibit" style="cursor:pointer">更多</span>
+          </div>
+          <div class="strip">
+            <button class="strip-card is-exhibit" type="button" data-go="exhibit">
+              <img src="./assets/exhibit-tower.jpg" alt="暮色里亮灯的古城楼阁" />
+              <span><em>云上特展</em><b>云上大理城</b></span>
+            </button>
+            <button class="strip-card" type="button" data-go="spot-erhai">
+              <img src="./assets/spot-erhai.jpg" alt="苍山下的洱海与白云" />
+              <span><b>洱海</b><small>半日足够</small></span>
+            </button>
+            <button class="strip-card" type="button" data-go="spot-xizhou">
+              <img src="./assets/spot-xizhou.jpg" alt="喜洲古镇街巷" />
+              <span><b>喜洲</b><small>慢下来走</small></span>
+            </button>
+            <button class="strip-card" type="button" data-go="spot-shuanglang">
+              <img src="./assets/spot-shuanglang.jpg" alt="双廊湖岸" />
+              <span><b>双廊</b><small>岸边拍照</small></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 搜索 -->
+      <section class="screen no-tab" id="search" data-name="搜索">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Search</em><b>搜索</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><circle cx="11" cy="11" r="6.2"/><path d="m15.6 15.6 4.4 4.4"/></svg>
+          <input id="search-input" type="search" placeholder="搜洱海、扎染、喜洲" />
+        </div>
+        <div class="list" id="search-result">
+          <button class="row" type="button" data-go="spot-erhai">
+            <img src="./assets/spot-erhai.jpg" alt="" />
+            <div class="grow"><b>洱海</b><p>景点 · 半日足够</p></div>
+            <span class="arrow">›</span>
+          </button>
+          <button class="row" type="button" data-go="spot-xizhou">
+            <img src="./assets/spot-xizhou.jpg" alt="" />
+            <div class="grow"><b>喜洲古镇</b><p>景点 · 慢逛</p></div>
+            <span class="arrow">›</span>
+          </button>
+          <button class="row" type="button" data-go="culture-dye">
+            <img src="./assets/craft-dye.jpg" alt="" />
+            <div class="grow"><b>扎染</b><p>文化 · 可体验</p></div>
+            <span class="arrow">›</span>
+          </button>
+          <button class="row" type="button" data-go="culture-wamao">
+            <img src="./assets/craft-shelf.jpg" alt="" />
+            <div class="grow"><b>瓦猫</b><p>文化 · 屋顶守护</p></div>
+            <span class="arrow">›</span>
+          </button>
+          <button class="row" type="button" data-go="culture-tea">
+            <img src="./assets/craft-tea.jpg" alt="" />
+            <div class="grow"><b>三道茶</b><p>文化 · 一苦二甜</p></div>
+            <span class="arrow">›</span>
+          </button>
+          <button class="row" type="button" data-go="spot-pagoda">
+            <img src="./assets/spot-pagoda.jpg" alt="" />
+            <div class="grow"><b>崇圣寺三塔</b><p>景点 · 半日</p></div>
+            <span class="arrow">›</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- S03 景点 -->
+      <section class="screen" id="spots" data-name="S03 景点列表">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><b>景点</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <button class="search" type="button" data-go="search">搜洱海、喜洲、双廊</button>
+        <button class="spot-promo" type="button" data-go="spot-erhai">
+          <img src="./assets/hero-erhai-aerial.jpg" alt="航拍洱海与岸上白墙" />
+          <div>
+            <small>第一次来</small>
+            <b>先去才村看湖</b>
+            <span>三四公里廊道，下午回古城</span>
+          </div>
+          <em>去看</em>
+        </button>
+        <div class="zone-head">
+          <b>按片区看</b>
+          <button type="button" id="zone-more">更多</button>
+        </div>
+        <div class="zone-row">
+          <button class="zone-card" type="button" data-go="spot-erhai" style="--zone:#8eb3c8">
+            <img src="./assets/hero-erhai-aerial.jpg" alt="东岸洱海" />
+            <b>东岸</b>
+          </button>
+          <button class="zone-card" type="button" data-go="spot-xizhou" style="--zone:#c4b08f">
+            <img src="./assets/spot-xizhou.jpg" alt="城北喜洲" />
+            <b>城北</b>
+          </button>
+          <button class="zone-card" type="button" data-go="spot-pagoda" style="--zone:#a3b59a">
+            <img src="./assets/spot-pagoda.jpg" alt="城西三塔" />
+            <b>城西</b>
+          </button>
+          <button class="zone-card" type="button" data-go="spot-shuanglang" style="--zone:#8fb8b2">
+            <img src="./assets/spot-shuanglang.jpg" alt="北段双廊" class="pos-r" />
+            <b>北段</b>
+          </button>
+        </div>
+        <div class="tags" data-filter="spots">
+          <button class="on" type="button" data-tag="all">全部</button>
+          <button type="button" data-tag="半日">半日</button>
+          <button type="button" data-tag="湖岸">湖岸</button>
+          <button type="button" data-tag="古镇">古镇</button>
+          <button type="button" data-tag="第一次">第一次</button>
+        </div>
+        <p class="list-note">六处景点，右下角加号收进行程</p>
+        <div class="place-list" id="spot-list">
+          <article class="place" data-zone="east" data-tags="半日 湖岸 第一次">
+            <button class="place-go" type="button" data-go="spot-erhai">
+              <img src="./assets/hero-erhai-aerial.jpg" alt="航拍洱海与岸上白墙" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9.5c2.2 0 2.2-2.2 4.4-2.2S9.6 9.5 11.8 9.5s2.2-2.2 4.4-2.2 2.2 2.2 4.4 2.2"/><path d="M3 15.5c2.2 0 2.2-2.2 4.4-2.2s2.2 2.2 4.4 2.2 2.2-2.2 4.4-2.2 2.2 2.2 4.4 2.2"/></svg></span>
+                  <b>洱海</b><em>首选</em>
+                </header>
+                <p>到才村看水色。廊道走三四公里就回。</p>
+                <div class="place-meta"><span>3–4 小时</span><span>东岸</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-erhai" aria-label="把洱海加入行程">+</button>
+          </article>
+          <article class="place" data-zone="north" data-tags="半日 古镇">
+            <button class="place-go" type="button" data-go="spot-xizhou">
+              <img src="./assets/spot-xizhou.jpg" alt="喜洲古镇街巷" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M7 10.8V19h10v-8.2"/></svg></span>
+                  <b>喜洲古镇</b>
+                </header>
+                <p>院子和扎染都在市户街，村口坐小火车。</p>
+                <div class="place-meta"><span>4 小时</span><span>城北</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-xizhou" aria-label="把喜洲加入行程">+</button>
+          </article>
+          <article class="place" data-zone="far" data-tags="湖岸 古镇">
+            <button class="place-go" type="button" data-go="spot-shuanglang">
+              <img src="./assets/spot-shuanglang.jpg" alt="双廊湖岸" class="pos-r" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="15" cy="8" r="2.4"/><path d="M3 17.5c2.4-3.2 5.2-4.8 9-4.8s6.6 1.6 9 4.8"/></svg></span>
+                  <b>双廊</b>
+                </header>
+                <p>村子贴着湖北段，从古城要单留车程。</p>
+                <div class="place-meta"><span>3 小时</span><span>北段</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-shuanglang" aria-label="把双廊加入行程">+</button>
+          </article>
+          <article class="place" data-zone="west" data-tags="半日 第一次">
+            <button class="place-go" type="button" data-go="spot-pagoda">
+              <img src="./assets/spot-pagoda.jpg" alt="崇圣寺三塔" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 7.5 8h9L12 3z"/><path d="M12 8 6 13h12L12 8z"/><path d="M12 13 4.5 18.5h15L12 13z"/><path d="M12 18.5V21"/></svg></span>
+                  <b>崇圣寺三塔</b>
+                </header>
+                <p>远处看清三座塔即可，不必走完寺院。</p>
+                <div class="place-meta"><span>1.5 小时</span><span>城西北</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-pagoda" aria-label="把三塔加入行程">+</button>
+          </article>
+          <article class="place" data-zone="west" data-tags="半日">
+            <button class="place-go" type="button" data-go="spot-cangshan">
+              <img src="./assets/spot-cangshan.jpg" alt="苍山" class="pos-r" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="m3 18 6.2-9 3.1 4.4L15.8 8 21 18H3z"/></svg></span>
+                  <b>苍山</b>
+                </header>
+                <p>先在海边看山形，想上去再坐索道。</p>
+                <div class="place-meta"><span>半天</span><span>城西</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-cangshan" aria-label="把苍山加入行程">+</button>
+          </article>
+          <article class="place" data-zone="far" data-tags="湖岸">
+            <button class="place-go" type="button" data-go="spot-bridge">
+              <img src="./assets/spot-bridge.jpg" alt="湖上拱桥" />
+              <div>
+                <header>
+                  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 15.5c2.4-4 5.2-6 9-6s6.6 2 9 6"/><path d="M4 16.2h16M8 16.2V19M12 16.2V19M16 16.2V19"/></svg></span>
+                  <b>湖上拱桥</b>
+                </header>
+                <p>双廊岸边的对称桥，拍完倒影就走。</p>
+                <div class="place-meta"><span>30 分钟</span><span>跟双廊</span></div>
+              </div>
+            </button>
+            <button class="place-add" type="button" data-add="spot-bridge" aria-label="把拱桥加入行程">+</button>
+          </article>
+        </div>
+        <div class="also">
+          <p>不只是景点</p>
+          <div>
+            <button type="button" data-go="culture-dye">
+              <img src="./assets/craft-dye.jpg" alt="" />
+              <b>扎染</b>
+              <span>文化 · 可体验</span>
+            </button>
+            <button type="button" data-go="exhibit">
+              <img src="./assets/exhibit-tower.jpg" alt="" />
+              <b>云上大理城</b>
+              <span>特展 · 先看气质</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- S04 洱海详情 -->
+      <section class="screen no-tab spot-page" id="spot-erhai" data-name="S04 洱海详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="洱海" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/hero-erhai-aerial.jpg" alt="航拍洱海：白墙村子伸进湖里" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>洱海</h1>
+            <p>第一次来，用半天把这片湖看懂，不必骑完全圈。</p>
+            <div class="mini"><em>半日</em><em>湖岸</em><em>新手友好</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>3–4 小时</b></div>
+            <div><small>怎么去</small><b>东门 20 分钟</b></div>
+            <div><small>适合</small><b>第一次来</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>先到岸边看水色</b><span>才村或龙龛都行，到了先站 10 分钟，别急着骑行。</span></div></li>
+              <li><i>2</i><div><b>沿生态廊道走一段</b><span>走 3–4 公里足够。全湖一圈要一天，第一次来不划算。</span></div></li>
+              <li><i>3</i><div><b>下午回古城吃饭</b><span>西边看山、东边看湖，选一边即可。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>现场</h2>
+            <div class="pics">
+              <img src="./assets/spot-erhai.jpg" alt="洱海与白云" />
+              <img src="./assets/spot-bridge.jpg" alt="湖上拱桥" />
+              <img src="./assets/hero-erhai.jpg" alt="洱海岸线" />
+            </div>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-shuanglang"><img src="./assets/spot-shuanglang.jpg" alt="" /><b>双廊</b><small>拍照、贴湖的村子</small></button>
+              <button type="button" data-go="spot-xizhou"><img src="./assets/spot-xizhou.jpg" alt="" /><b>喜洲</b><small>慢半日看民居</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="洱海">加入想去</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab spot-page" id="spot-xizhou" data-name="喜洲详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="喜洲古镇" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/spot-xizhou.jpg" alt="喜洲古镇" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>喜洲古镇</h1>
+            <p>看白族院子和扎染，中午可以坐下来喝杯三道茶。</p>
+            <div class="mini"><em>古镇</em><em>半天</em><em>慢逛</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>4 小时</b></div>
+            <div><small>怎么去</small><b>古城约 40 分钟</b></div>
+            <div><small>适合</small><b>看当地生活</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>严家大院看民居</b><span>三坊一照壁进院子里看，比在街上拍墙有用。</span></div></li>
+              <li><i>2</i><div><b>转进作坊看扎染</b><span>能看见蓝白怎么一层层浸出来，不必报整日体验。</span></div></li>
+              <li><i>3</i><div><b>田园小火车绕一圈</b><span>坐 20 分钟看田和村子，当作收尾。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>现场</h2>
+            <div class="pics">
+              <img src="./assets/culture-town.jpg" alt="" />
+              <img src="./assets/culture-room.jpg" alt="" />
+              <img src="./assets/craft-dye.jpg" alt="" />
+            </div>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>回城路上可停</small></button>
+              <button type="button" data-go="spot-pagoda"><img src="./assets/spot-pagoda.jpg" alt="" /><b>三塔</b><small>古城标志</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="喜洲古镇">加入想去</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab spot-page" id="spot-shuanglang" data-name="双廊详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="双廊" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/spot-shuanglang.jpg" alt="双廊" class="pos-r" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>双廊</h1>
+            <p>村子贴着湖岸长，适合慢慢拍，车程要单独留出来。</p>
+            <div class="mini"><em>湖岸</em><em>拍照</em><em>半日含车</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>3 小时</b></div>
+            <div><small>怎么去</small><b>环海东路</b></div>
+            <div><small>适合</small><b>拍海景</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>南门码头下看湖</b><span>先确认水色和风，再决定往北走多远。</span></div></li>
+              <li><i>2</i><div><b>沿岸走到玉几岛一带</b><span>白墙、栈道、远山叠在一条线上，是主要拍照段。</span></div></li>
+              <li><i>3</i><div><b>拱桥打卡后返程</b><span>不必住下来。当天来回，和洱海不要排在同一上午。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>现场</h2>
+            <div class="pics">
+              <img src="./assets/hero-erhai-aerial.jpg" alt="" />
+              <img src="./assets/spot-bridge.jpg" alt="" />
+              <img src="./assets/spot-shuanglang.jpg" alt="" />
+            </div>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-bridge"><img src="./assets/spot-bridge.jpg" alt="" /><b>湖上拱桥</b><small>顺路 30 分钟</small></button>
+              <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>西岸看山</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="双廊">加入想去</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab spot-page" id="spot-cangshan" data-name="苍山详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="苍山" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/spot-cangshan.jpg" alt="苍山" class="pos-r" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>苍山</h1>
+            <p>雪线落在湖对面。第一次来，海边看山通常比上山更值。</p>
+            <div class="mini"><em>看山</em><em>半天+</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>半天到一天</b></div>
+            <div><small>怎么去</small><b>城西索道</b></div>
+            <div><small>适合</small><b>有体力再上</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>先在洱海西岸看山</b><span>确认当天有没有云。云封顶时不必硬上。</span></div></li>
+              <li><i>2</i><div><b>再决定要不要坐索道</b><span>感通索道半日足够。徒步洗马潭要一整天。</span></div></li>
+              <li><i>3</i><div><b>下午下山回城</b><span>别和双廊排同一天，车程会把行程吃掉。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>山下看倒影</small></button>
+              <button type="button" data-go="spot-pagoda"><img src="./assets/spot-pagoda.jpg" alt="" /><b>三塔</b><small>回城可停</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="苍山">加入想去</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab spot-page" id="spot-pagoda" data-name="三塔详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="崇圣寺三塔" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/spot-pagoda.jpg" alt="崇圣寺三塔" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>崇圣寺三塔</h1>
+            <p>大理的天际线。不用走完全寺，把三座塔的比例看清即可。</p>
+            <div class="mini"><em>古城</em><em>半日</em><em>标志</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>1.5–2 小时</b></div>
+            <div><small>怎么去</small><b>城西北可到</b></div>
+            <div><small>适合</small><b>看标志建筑</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>先在门外看全景</b><span>三塔和苍山叠在一起，是最清楚的构图。</span></div></li>
+              <li><i>2</i><div><b>进寺走到主塔前</b><span>不用逐殿转。主塔前站 15 分钟够用。</span></div></li>
+              <li><i>3</i><div><b>出寺回古城</b><span>和喜洲不要排同一上午，会赶。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>现场</h2>
+            <div class="pics">
+              <img src="./assets/spot-pagoda.jpg" alt="" />
+              <img src="./assets/culture-temple.jpg" alt="" />
+              <img src="./assets/exhibit-tower.jpg" alt="" />
+            </div>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-xizhou"><img src="./assets/spot-xizhou.jpg" alt="" /><b>喜洲</b><small>往北看民居</small></button>
+              <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>出城看湖</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="崇圣寺三塔">加入想去</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab spot-page" id="spot-bridge" data-name="拱桥详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="spot-actions">
+            <button class="icon-btn" type="button" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="m8 10.8 6.2-3.4M8 13.2l6.2 3.4"/></svg></button>
+            <button class="icon-btn fav-btn" type="button" data-fav="湖上拱桥" aria-label="收藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"><path d="M12 19.4S5 14.2 5 9.8A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 1.8c0 4.4-7 9.6-7 9.6z"/></svg></button>
+          </span>
+        </header>
+        <div class="spot-cover">
+          <img src="./assets/spot-bridge.jpg" alt="湖上拱桥" />
+        </div>
+        <div class="spot-sheet">
+          <div class="spot-head">
+            <h1>湖上拱桥</h1>
+            <p>双廊岸边的打卡点。拍完对称倒影就可以走，不必单独排半天。</p>
+            <div class="mini"><em>顺路</em><em>拍照</em><em>30 分钟</em></div>
+          </div>
+          <div class="facts">
+            <div><small>建议时长</small><b>30 分钟</b></div>
+            <div><small>怎么去</small><b>并进双廊</b></div>
+            <div><small>适合</small><b>拍干净构图</b></div>
+          </div>
+          <section class="spot-block">
+            <h2>可以这样逛</h2>
+            <ol class="route">
+              <li><i>1</i><div><b>桥头看倒影</b><span>无风时最清楚。有风就换角度，不必等。</span></div></li>
+              <li><i>2</i><div><b>走上桥面转身拍村子</b><span>白墙和湖在同一条线上。</span></div></li>
+              <li><i>3</i><div><b>接着走双廊岸线</b><span>这是双廊的一站，不是独立景点。</span></div></li>
+            </ol>
+          </section>
+          <section class="spot-block">
+            <h2>接下来去</h2>
+            <div class="related">
+              <button type="button" data-go="spot-shuanglang"><img src="./assets/spot-shuanglang.jpg" alt="" /><b>双廊</b><small>把岸线走完</small></button>
+              <button type="button" data-go="spot-erhai"><img src="./assets/hero-erhai-aerial.jpg" alt="" /><b>洱海</b><small>回程看西岸</small></button>
+            </div>
+          </section>
+        </div>
+        <div class="spot-dock">
+          <button class="btn-primary add-fav" type="button" data-fav="湖上拱桥">加入想去</button>
+        </div>
+      </section>
+      <!-- S05 文化 -->
+      <section class="screen" id="culture" data-name="S05 文化列表">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><b>文化</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <button class="search" type="button" data-go="search">搜扎染、白族、节庆</button>
+        <button class="spot-promo cult-promo" type="button" data-go="culture-dye">
+          <img src="./assets/craft-dye.jpg" alt="扎染布面" class="pos-r" />
+          <div>
+            <small>先看懂一件</small>
+            <b>扎染</b>
+            <span>蓝白是浸出来的，一小时能遇见</span>
+          </div>
+          <em>去看</em>
+        </button>
+        <div class="meet">
+          <div class="zone-head">
+            <b>在哪遇见</b>
+          </div>
+          <div class="zone-row">
+            <button class="zone-card" type="button" data-go="spot-xizhou" style="--zone:#c4b08f">
+              <img src="./assets/spot-xizhou.jpg" alt="喜洲" />
+              <b>喜洲</b>
+            </button>
+            <button class="zone-card" type="button" data-go="culture-dye" style="--zone:#6d82a8">
+              <img src="./assets/craft-cloth.jpg" alt="周城扎染" />
+              <b>周城</b>
+            </button>
+            <button class="zone-card" type="button" data-go="culture-tower" style="--zone:#a3b59a">
+              <img src="./assets/culture-temple.jpg" alt="大理古城" />
+              <b>古城</b>
+            </button>
+          </div>
+        </div>
+        <div class="tags" data-filter="culture">
+          <button class="on" type="button" data-tag="all">全部</button>
+          <button type="button" data-tag="工艺">工艺</button>
+          <button type="button" data-tag="民俗">民俗</button>
+          <button type="button" data-tag="饮食">饮食</button>
+        </div>
+        <p class="list-note">点加号收进体验单，再按地点排</p>
+        <div class="cult-list">
+          <article class="cult" data-kind="craft" data-tags="工艺">
+            <button class="cult-go" type="button" data-go="culture-dye">
+              <span class="cult-thumb"><img src="./assets/craft-dye.jpg" alt="扎染" /></span>
+              <div>
+                <header><b>扎染</b></header>
+                <p>蓝从板蓝根里浸出来。喜洲或周城，一小时够。</p>
+                <div class="place-meta"><span>1 小时</span><span>喜洲、周城</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-dye" aria-label="把扎染加入体验">+</button>
+          </article>
+          <article class="cult" data-kind="folk" data-tags="民俗">
+            <button class="cult-go" type="button" data-go="culture-wamao">
+              <span class="cult-thumb"><img src="./assets/craft-shelf.jpg" alt="瓦猫" /></span>
+              <div>
+                <header><b>瓦猫</b></header>
+                <p>蹲在屋脊上。路过抬头就能看见。</p>
+                <div class="place-meta"><span>路过</span><span>喜洲、古城</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-wamao" aria-label="把瓦猫加入体验">+</button>
+          </article>
+          <article class="cult" data-kind="folk" data-tags="民俗">
+            <button class="cult-go" type="button" data-go="culture-house">
+              <span class="cult-thumb"><img src="./assets/culture-town.jpg" alt="白族民居" /></span>
+              <div>
+                <header><b>白族民居</b></header>
+                <p>三坊一照壁。喜洲严家大院最完整。</p>
+                <div class="place-meta"><span>2 小时</span><span>喜洲</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-house" aria-label="把民居加入体验">+</button>
+          </article>
+          <article class="cult" data-kind="food" data-tags="饮食">
+            <button class="cult-go" type="button" data-go="culture-tea">
+              <span class="cult-thumb"><img src="./assets/craft-tea.jpg" alt="三道茶" /></span>
+              <div>
+                <header><b>三道茶</b></header>
+                <p>苦、甜、回味三杯。坐下来喝完即可。</p>
+                <div class="place-meta"><span>40 分钟</span><span>喜洲、古城</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-tea" aria-label="把三道茶加入体验">+</button>
+          </article>
+          <article class="cult" data-kind="feast" data-tags="民俗">
+            <button class="cult-go" type="button" data-go="culture-fire">
+              <span class="cult-thumb"><img src="./assets/craft-fire.jpg" alt="火把节" /></span>
+              <div>
+                <header><b>火把节</b></header>
+                <p>夜里围着火走一圈。古城和喜洲都有。</p>
+                <div class="place-meta"><span>晚上</span><span>古城、喜洲</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-fire" aria-label="把火把节加入体验">+</button>
+          </article>
+          <article class="cult" data-kind="folk" data-tags="民俗">
+            <button class="cult-go" type="button" data-go="culture-tower">
+              <span class="cult-thumb"><img src="./assets/culture-temple.jpg" alt="古城楼阁" /></span>
+              <div>
+                <header><b>古城楼阁</b></header>
+                <p>先看飞檐和远山的比例，不必认全名字。</p>
+                <div class="place-meta"><span>路过</span><span>古城</span></div>
+              </div>
+            </button>
+            <button class="cult-add" type="button" data-cult-add="culture-tower" aria-label="把楼阁加入体验">+</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- S06 扎染详情 -->
+      <section class="screen no-tab culture-page dye-page" id="culture-dye" data-name="S06 扎染详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/craft-dye.jpg" alt="扎染布面" />
+          <div class="cover-copy"><em>ZHOU CHENG</em><strong>扎染</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>工艺</em><em>可体验</em><em>周城</em></div>
+          <p class="intro">大理扎染以周城最完整。白不是画剩的空，是线缝死、靛泥浸不进去的地方；蓝也不是涂上去，是板蓝根缸里一遍遍浸、提出来氧化变深。</p>
+          <p class="cult-quote">看布先找白，再数蓝有几层。</p>
+          <div class="pics">
+            <img src="./assets/craft-dye.jpg" alt="架上的扎染布" />
+            <img src="./assets/craft-cloth.jpg" alt="风里的蓝布" />
+            <img src="./assets/hero-tiedye.jpg" alt="扎染纹样特写" />
+          </div>
+          <div class="cells inset">
+            <div><span>看过程</span><b>周城作坊、染缸</b></div>
+            <div><span>上手做</span><b>喜洲手作店更方便</b></div>
+            <div><span>停留</span><b>看 20 分钟 · 做一块约 1 小时</b></div>
+          </div>
+          <h4>一块布认这三处</h4>
+          <div class="keys dye-keys">
+            <article><b>白</b><p>缝、绑、结挡住的位置。拆线后才露出来，不是颜料留白。</p></article>
+            <article><b>层</b><p>浅蓝到深蓝是浸的次数。提出来见空气，才会慢慢变蓝。</p></article>
+            <article><b>形</b><p>蝴蝶、几何、山水纹，都从折叠来。先看折痕，再看图案。</p></article>
+          </div>
+          <h4>一小时可以做什么</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>只做方巾或手帕</b><span>不要一上来做桌布。小块才能在一小时里浸完、拆线。</span></div></li>
+            <li><i>2</i><div><b>跟师傅走一遍针法</b><span>常见是缝、绑两种。缝住的地方浸不进色，这就是白。</span></div></li>
+            <li><i>3</i><div><b>浸靛、提出、见空气</b><span>出缸时往往还是绿黄，挂着氧化才转蓝。湿着带走也行，回家阴干。</span></div></li>
+          </ol>
+          <h4>去周城还是喜洲</h4>
+          <div class="where-two">
+            <button type="button" data-go="culture-dye">
+              <img src="./assets/craft-cloth.jpg" alt="周城" />
+              <b>周城</b>
+              <span>作坊密，能看到整匹布和染缸。想看过程来这里。</span>
+            </button>
+            <button type="button" data-go="spot-xizhou">
+              <img src="./assets/spot-xizhou.jpg" alt="喜洲" />
+              <b>喜洲</b>
+              <span>跟民居、三道茶同一条线。第一次、时间紧更合适。</span>
+            </button>
+          </div>
+          <h4>怎么带走</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>只叠方巾或手帕</b><span>对光能看见针眼，才是手作。湿着阴干，不要暴晒。</span></div></li>
+          </ol>
+          <h4>看完可以继续</h4>
+          <div class="related">
+            <button type="button" data-go="spot-xizhou">
+              <img src="./assets/spot-xizhou.jpg" alt="" /><b>喜洲古镇</b>
+            </button>
+            <button type="button" data-go="culture-house">
+              <img src="./assets/culture-town.jpg" alt="" /><b>白族民居</b>
+            </button>
+          </div>
+          <div class="spot-dock">
+            <button class="btn-light" type="button" data-go="spot-xizhou">去喜洲</button>
+            <button class="btn-primary" type="button" data-cult-add="culture-dye">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen no-tab culture-page" id="culture-wamao" data-name="瓦猫详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/craft-shelf.jpg" alt="瓦猫小偶" />
+          <div class="cover-copy"><em>ROOF</em><strong>瓦猫</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>民俗</em><em>路过即可</em></div>
+          <p class="intro">瓦猫蹲在白族房子的正脊上，开口朝外。不是院子里的摆件，是屋脊上的守护。没有屋脊实拍时，用货架小偶对图，不拿别的兽形来冒充。</p>
+          <p class="cult-quote">先抬头看脊，再进店里认小偶。</p>
+          <div class="pics">
+            <img src="./assets/craft-shelf.jpg" alt="瓦猫小偶" />
+            <img src="./assets/culture-temple.jpg" alt="屋脊与飞檐" />
+            <img src="./assets/culture-town.jpg" alt="古城街巷" />
+          </div>
+          <div class="cells inset">
+            <div><span>认它</span><b>正脊、开口、蹲姿</b></div>
+            <div><span>在哪遇得到</span><b>喜洲民居、古城老屋</b></div>
+            <div><span>停留</span><b>路过抬头 10 秒</b></div>
+          </div>
+          <h4>路过认这三处</h4>
+          <div class="keys cult-keys">
+            <article><b>脊</b><p>在屋脊正中，不在门墩、不在院子。找不到脊，就还没看见它。</p></article>
+            <article><b>口</b><p>嘴是张开的。民间说法是吞灾、镇火，不要把它当成装饰猫。</p></article>
+            <article><b>偶</b><p>店里的是缩小的手作。买之前先对照屋脊上的那一只。</p></article>
+          </div>
+          <h4>怎么看</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>站在巷口抬头</b><span>喜洲老房子的正脊最容易碰上。不要爬屋顶、不要伸手摸。</span></div></li>
+            <li><i>2</i><div><b>看完再进店</b><span>小偶是记忆，不是替代。先有屋顶上的那一只，再决定带不带。</span></div></li>
+          </ol>
+          <div class="spot-dock">
+            <button class="btn-light" type="button" data-go="spot-xizhou">去喜洲</button>
+            <button class="btn-primary" type="button" data-cult-add="culture-wamao">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen no-tab culture-page" id="culture-house" data-name="民居详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/culture-town.jpg" alt="白族民居街巷" />
+          <div class="cover-copy"><em>XIZHOU</em><strong>白族民居</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>建筑</em><em>喜洲</em></div>
+          <p class="intro">常见格局是三坊一照壁：三面住房，正对大门一面照壁。照壁把光弹回院子，也把「家」的边界立住。喜洲的院子比古城完整，值得停下来进门看。</p>
+          <p class="cult-quote">先看照壁，再走三坊。</p>
+          <div class="pics">
+            <img src="./assets/culture-town.jpg" alt="街巷与照壁" />
+            <img src="./assets/culture-room.jpg" alt="院落里坐下" />
+            <img src="./assets/craft-box.jpg" alt="树荫台阶与湖" />
+          </div>
+          <div class="cells inset">
+            <div><span>最完整</span><b>喜洲严家大院一带</b></div>
+            <div><span>看什么</span><b>照壁、天井、门头彩绘</b></div>
+            <div><span>停留</span><b>进院 1–2 小时</b></div>
+          </div>
+          <h4>进院认这三处</h4>
+          <div class="keys cult-keys">
+            <article><b>壁</b><p>大门对面那面墙。看它如何挡视线、把光送回天井。</p></article>
+            <article><b>坊</b><p>三面住房围成「坊」。走一圈，比只在门口拍照有用。</p></article>
+            <article><b>绘</b><p>门头、梁枋上的彩绘。近看笔触，远看和白墙的对比。</p></article>
+          </div>
+          <h4>可以这样走</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>从大门对到照壁</b><span>先站在门槛上看整面壁，不要一进门就左右拍。</span></div></li>
+            <li><i>2</i><div><b>顺三坊走一圈</b><span>正房、厢房的高低和开间，比装饰更说明格局。</span></div></li>
+            <li><i>3</i><div><b>中午可坐下来</b><span>选有树荫、能看见水的台阶。院子里喝茶或看扎染，不必另开一天。</span></div></li>
+          </ol>
+          <div class="where-two">
+            <button type="button" data-go="spot-xizhou">
+              <img src="./assets/spot-xizhou.jpg" alt="喜洲" />
+              <b>喜洲</b>
+              <span>院子完整，适合进门慢看。</span>
+            </button>
+            <button type="button" data-go="culture-tower">
+              <img src="./assets/culture-temple.jpg" alt="古城" />
+              <b>古城</b>
+              <span>街上好看，完整天井更少。当对照即可。</span>
+            </button>
+          </div>
+          <div class="spot-dock">
+            <button class="btn-light" type="button" data-go="spot-xizhou">去喜洲</button>
+            <button class="btn-primary" type="button" data-cult-add="culture-house">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen no-tab culture-page" id="culture-tea" data-name="三道茶详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/craft-tea.jpg" alt="烤茶与茶盏" />
+          <div class="cover-copy"><em>SAN DAO</em><strong>三道茶</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>待客</em><em>饮食</em></div>
+          <p class="intro">白族待客是三杯，不是菜单上的套餐名。第一道烤茶偏苦，第二道加糖或乳扇变甜，第三道姜、桂一类走回味。三杯都坐下喝完，才算遇见。</p>
+          <p class="cult-quote">一苦二甜三回味，顺序不要打乱。</p>
+          <div class="pics">
+            <img src="./assets/craft-tea.jpg" alt="茶盏与壶" />
+            <img src="./assets/craft-set.jpg" alt="茶盘" />
+            <img src="./assets/culture-room.jpg" alt="院子里坐" />
+          </div>
+          <div class="cells inset">
+            <div><span>在哪喝得到</span><b>喜洲院子、古城茶馆</b></div>
+            <div><span>停留</span><b>三杯约 40 分钟</b></div>
+            <div><span>适合</span><b>走累了想坐下</b></div>
+          </div>
+          <h4>三杯分别是什么</h4>
+          <div class="keys cult-keys">
+            <article><b>苦</b><p>烤茶。焦香、入口涩。第一杯小口，不要兑糖。</p></article>
+            <article><b>甜</b><p>红糖或乳扇一类。甜是压过苦，不是另外一道点心。</p></article>
+            <article><b>回</b><p>姜、桂、花椒一类走喉。喝完停 10 秒，回味才出来。</p></article>
+          </div>
+          <h4>怎么坐</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>按顺序接杯</b><span>不要三杯同时要。每道之间留一点空，才喝得出差别。</span></div></li>
+            <li><i>2</i><div><b>别当成表演</b><span>有人会讲解，也可以不听。关键是把三杯喝完。</span></div></li>
+            <li><i>3</i><div><b>和民居同一条线</b><span>喜洲看完院子再坐，比单独跑一趟茶馆顺。带回去要三份分开，混成一包茶泡不出三道。</span></div></li>
+          </ol>
+          <div class="spot-dock">
+            <button class="btn-light" type="button" data-go="spot-xizhou">去喜洲</button>
+            <button class="btn-primary" type="button" data-cult-add="culture-tea">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen no-tab culture-page" id="culture-tower" data-name="楼阁详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/culture-temple.jpg" alt="古城楼阁" />
+          <div class="cover-copy"><em>EAVES</em><strong>古城楼阁</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>建筑</em><em>路过</em></div>
+          <p class="intro">先看比例，再问名字。飞檐、屋脊、背后的苍山叠成一层，站远比贴着牌坊拍更清楚。崇圣寺三塔是把这条天际线钉住的那三座。</p>
+          <p class="cult-quote">退一步，让山进画面。</p>
+          <div class="pics">
+            <img src="./assets/culture-temple.jpg" alt="楼阁飞檐" />
+            <img src="./assets/spot-pagoda.jpg" alt="崇圣寺三塔" />
+            <img src="./assets/culture-town.jpg" alt="古城街巷" />
+          </div>
+          <div class="cells inset">
+            <div><span>看天际线</span><b>飞檐、正脊、远山</b></div>
+            <div><span>在哪遇得到</span><b>古城城楼、崇圣寺一带</b></div>
+            <div><span>停留</span><b>路过 5–15 分钟</b></div>
+          </div>
+          <h4>抬眼认这三层</h4>
+          <div class="keys cult-keys">
+            <article><b>檐</b><p>飞檐的起翘和出挑。近看构件，远看它如何压住墙面。</p></article>
+            <article><b>脊</b><p>正脊是一条线。有瓦猫就在这条线上，和楼阁是同一套屋顶语言。</p></article>
+            <article><b>山</b><p>苍山在北。楼阁把山留在身后，才有「叠一层」的感觉。</p></article>
+          </div>
+          <h4>怎么看</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>先退到能看见整座</b><span>贴着墙只看彩绘。退到巷口或空地，檐和山才会同时进画面。</span></div></li>
+            <li><i>2</i><div><b>要看塔，去崇圣寺</b><span>三座塔把天际线钉住。不必走完全寺，站在远处把比例看清即可。</span></div></li>
+          </ol>
+          <div class="spot-dock">
+            <button class="btn-light" type="button" data-go="spot-pagoda">去看三塔</button>
+            <button class="btn-primary" type="button" data-cult-add="culture-tower">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen no-tab culture-page" id="culture-fire" data-name="火把节详情">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay spot-nav">
+          <button class="back" type="button" data-go="culture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <span class="nav-slot"></span>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="cover">
+          <img src="./assets/craft-fire.jpg" alt="火把节" />
+          <div class="cover-copy"><em>JUNE</em><strong>火把节</strong></div>
+        </div>
+        <div class="sheet">
+          <div class="mini"><em>节庆</em><em>不是每天都有</em></div>
+          <p class="intro">大理一带多在农历六月下旬。夜里围着火堆走，不是景区固定场次。赶不上，不要把它写成必须打卡；赶上了，停下来看完一圈再走。</p>
+          <p class="cult-quote">遇到就停，没遇到就看别的。</p>
+          <div class="pics">
+            <img src="./assets/craft-fire.jpg" alt="火堆" />
+            <img src="./assets/culture-town.jpg" alt="夜里的街" />
+            <img src="./assets/culture-temple.jpg" alt="夜里的屋脊" />
+          </div>
+          <div class="cells inset">
+            <div><span>时节</span><b>农历六月，看当年告示</b></div>
+            <div><span>常见地点</span><b>古城、喜洲附近</b></div>
+            <div><span>停留</span><b>一圈即可，不必跟完全程</b></div>
+          </div>
+          <h4>夜场认这三处</h4>
+          <div class="keys cult-keys">
+            <article><b>火</b><p>主火堆在空地中央。先站在外圈，看人怎么走，再决定靠不靠近。</p></article>
+            <article><b>圈</b><p>人是围着走，不是排队打卡。插进圈里拍照会挡路。</p></article>
+            <article><b>夜</b><p>亮处只有火。路不熟就站在灯亮的一侧，看完再回住的地方。</p></article>
+          </div>
+          <h4>赶上了怎么走</h4>
+          <ol class="route">
+            <li><i>1</i><div><b>先问当天有没有</b><span>客栈或村里会贴。没有就改看民居、扎染，不要空等。</span></div></li>
+            <li><i>2</i><div><b>站外圈看完一轮</b><span>火把、人、烟是一起的。看懂方向再走近。</span></div></li>
+            <li><i>3</i><div><b>别把它当表演</b><span>没有固定谢幕。觉得够了就离开，把路留给还在转的人。</span></div></li>
+          </ol>
+          <div class="spot-dock solo">
+            <button class="btn-primary" type="button" data-cult-add="culture-fire">加入体验</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 云上特展 -->
+      <section class="screen no-tab" id="exhibit" data-name="云上特展">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <header class="nav overlay">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <strong></strong>
+          <span></span>
+        </header>
+        <div class="exhibit-hero">
+          <img src="./assets/hero-erhai-aerial.jpg" alt="云上大理城" />
+          <div class="exhibit-copy">
+            <em>YUNSHANG</em>
+            <h3>云上大理城</h3>
+            <p>从空中先看见苍洱。看完再决定去岸上还是进古镇。</p>
+          </div>
+        </div>
+        <div class="sheet">
+          <p class="intro">特展只做沉浸，不塞攻略。看完从这里回到景点或文化，继续逛。</p>
+          <div class="pics">
+            <img src="./assets/hero-boat.jpg" alt="" />
+            <img src="./assets/hero-wave.jpg" alt="" />
+            <img src="./assets/hero-erhai.jpg" alt="" />
+          </div>
+          <div class="cells inset">
+            <div><span>气质</span><b>风花雪月</b></div>
+            <div><span>接下来</span><b>去洱海或扎染</b></div>
+          </div>
+          <div class="related">
+            <button type="button" data-go="spot-erhai">
+              <img src="./assets/hero-erhai.jpg" alt="" /><b>洱海航拍</b>
+            </button>
+            <button type="button" data-go="spot-bridge">
+              <img src="./assets/spot-bridge.jpg" alt="" /><b>湖上拱桥</b>
+            </button>
+            <button type="button" data-go="culture-dye">
+              <img src="./assets/craft-dye.jpg" alt="" /><b>扎染</b>
+            </button>
+          </div>
+          <div class="btn-row">
+            <button class="btn-light" type="button" data-go="spot-erhai">去看洱海</button>
+            <button class="btn-primary" type="button" data-go="culture-dye" style="margin-top:20px">去看扎染</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- S08 我的 -->
+      <section class="screen" id="mine" data-name="S08 我的">
+        <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
+        <div class="mine-hero">
+          <img src="./assets/hero-erhai-aerial.jpg" alt="" />
+          <div class="cover-copy" style="bottom:auto;top:92px">
+            <em>MINE</em>
+            <strong>我的</strong>
+          </div>
+          <div class="profile">
+            <div class="logo sm"><img src="./assets/wamao.svg" alt="" /></div>
+            <div>
+              <b>旅人</b>
+              <p>记录你想去的大理</p>
+            </div>
+          </div>
+        </div>
+        <div class="cells pad">
+          <button type="button" id="open-fav-list">
+            <span>想去的地方</span><b id="fav-count">还没有 ›</b>
+          </button>
+          <button type="button" data-go="history">
+            <span>浏览记录</span><b>›</b>
+          </button>
+        </div>
+        <div class="block">
+          <div class="block-head">
+            <div><b>最近看过</b></div>
+          </div>
+          <div class="related">
+            <button type="button" data-go="spot-erhai">
+              <img src="./assets/spot-erhai.jpg" alt="" /><b>洱海</b>
+            </button>
+            <button type="button" data-go="culture-dye">
+              <img src="./assets/craft-dye.jpg" alt="" /><b>扎染</b>
+            </button>
+            <button type="button" data-go="spot-shuanglang">
+              <img src="./assets/spot-shuanglang.jpg" alt="" /><b>双廊</b>
+            </button>
+          </div>
+        </div>
+        <div class="cells pad">
+          <button type="button" data-go="about"><span>关于小程序</span><b>›</b></button>
+        </div>
+      </section>
+
+      <!-- S09 空状态 -->
+      <section class="screen no-tab" id="empty" data-name="S09 想去·空">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Saved</em><b>想去</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="empty">
+          <div class="logo"><img src="./assets/wamao.svg" alt="" /></div>
+          <p>还没有想去的地方</p>
+          <i class="rule"></i>
+          <span class="desc">去首页逛逛，看中了再收进来</span>
+          <button class="btn-primary" type="button" data-go="home">去首页逛逛</button>
+        </div>
+      </section>
+
+      <section class="screen no-tab" id="fav-list" data-name="想去·有数据">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Saved</em><b>想去</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="list" id="fav-items"></div>
+      </section>
+
+      <section class="screen no-tab" id="history" data-name="浏览记录">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Trace</em><b>足迹</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="list">
+          <button class="row" type="button" data-go="spot-erhai">
+            <img src="./assets/spot-erhai.jpg" alt="" />
+            <div class="grow"><b>洱海</b><p>今天看过</p></div>
+          </button>
+          <button class="row" type="button" data-go="culture-dye">
+            <img src="./assets/craft-dye.jpg" alt="" />
+            <div class="grow"><b>扎染</b><p>今天看过</p></div>
+          </button>
+          <button class="row" type="button" data-go="spot-shuanglang">
+            <img src="./assets/spot-shuanglang.jpg" alt="" />
+            <div class="grow"><b>双廊</b><p>今天看过</p></div>
+          </button>
+          <button class="row" type="button" data-go="culture-wamao">
+            <img src="./assets/craft-shelf.jpg" alt="" />
+            <div class="grow"><b>瓦猫</b><p>昨天看过</p></div>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen no-tab" id="about" data-name="关于">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>About</em><b>关于</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="about-card">
+          <div class="logo" style="margin:0 auto"><img src="./assets/wamao.svg" alt="" /></div>
+          <h3 style="margin-top:12px">大理</h3>
+          <p>把分散的文旅信息，收成可逛的一条路。瓦猫只出现在启动、空状态和这里。</p>
+          <div class="about-pics">
+            <img src="./assets/hero-erhai.jpg" alt="" />
+            <img src="./assets/hero-boat.jpg" alt="" />
+            <img src="./assets/hero-tiedye.jpg" alt="" />
+          </div>
+          <p>课程项目 · 界面设计练习<br />TDesign 主题化 · 非官方导览</p>
+        </div>
+      </section>
+
+      <!-- S10 加载 -->
+      <section class="screen" id="loading" data-name="S10 加载">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Spots</em><b>景点</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="search">搜洱海、喜洲、双廊</div>
+        <div class="tags">
+          <button class="on" type="button">全部</button>
+          <button type="button">洱海</button>
+          <button type="button">古城</button>
+        </div>
+        <div class="list">
+          <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
+          <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
+          <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
+        </div>
+      </section>
+
+      <section class="screen" id="fail" data-name="S10 失败">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav">
+          <button class="back" type="button" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
+          <div class="nav-title"><em>Spots</em><b>景点</b></div>
+          <span class="nav-slot"></span>
+        </header>
+        <div class="empty">
+          <div class="logo"><img src="./assets/wamao.svg" alt="" /></div>
+          <p style="color:var(--error);font-size:16px">加载失败</p>
+          <span class="desc">过一会再试试</span>
+          <button class="btn-primary" type="button" data-go="spots">重新加载</button>
+        </div>
+      </section>
+
+      <button class="trip-fab" id="trip-fab" type="button" hidden>
+        <b id="trip-count">0</b>
+        <span>行程</span>
+      </button>
+      <button class="trip-fab cult-fab" id="cult-fab" type="button" hidden>
+        <b id="cult-count">0</b>
+        <span>体验</span>
+      </button>
+      <div class="trip-mask" id="trip-mask" hidden></div>
+      <aside class="trip-sheet" id="trip-sheet" hidden>
+        <div class="trip-view" id="trip-main">
+          <i class="sheet-grab"></i>
+          <header>
+            <b>想去的景点</b>
+            <button type="button" id="trip-close">关闭</button>
+          </header>
+          <div class="trip-picks" id="trip-picks"></div>
+          <button class="trip-field" id="trip-open-date" type="button">
+            <span>出发日期</span>
+            <b id="trip-date-label">10月5日 周一</b>
+          </button>
+          <button class="trip-field" id="trip-open-loc" type="button">
+            <span>出发点</span>
+            <b id="trip-loc-label">大理古城</b>
+            <small id="trip-loc-addr">一塔路南城门</small>
+          </button>
+          <div class="trip-span">
+            <div class="trip-span-head">
+              <span>可用时间</span>
+              <b id="trip-days-label">1 天</b>
+            </div>
+            <input class="trip-days" id="trip-days" type="range" min="1" max="30" value="1" aria-label="可用天数，一个月以内" />
+            <div class="trip-span-scale"><i>1天</i><i>7天</i><i>14天</i><i>30天</i></div>
+          </div>
+          <button class="btn-primary" id="trip-plan" type="button">AI 推荐行程</button>
+          <div class="trip-result" id="trip-result"></div>
+        </div>
+        <div class="trip-view" id="trip-cal" hidden>
+          <i class="sheet-grab"></i>
+          <header>
+            <button type="button" data-trip-back>返回</button>
+            <b>出发日期</b>
+            <span></span>
+          </header>
+          <div class="cal-head">
+            <button type="button" id="cal-prev" aria-label="上个月">‹</button>
+            <b id="cal-title">2026年10月</b>
+            <button type="button" id="cal-next" aria-label="下个月">›</button>
+          </div>
+          <div class="cal-week"><i>日</i><i>一</i><i>二</i><i>三</i><i>四</i><i>五</i><i>六</i></div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div class="trip-view" id="trip-loc" hidden>
+          <i class="sheet-grab"></i>
+          <header>
+            <button type="button" data-trip-back>返回</button>
+            <b>出发点</b>
+            <span></span>
+          </header>
+          <label class="loc-search">
+            <input id="loc-q" type="search" placeholder="搜索大理的地点" autocomplete="off" />
+          </label>
+          <div class="loc-map" aria-hidden="true">
+            <i class="loc-pin" id="loc-pin" data-zone="west"></i>
+            <b id="loc-pin-name">大理古城</b>
+          </div>
+          <p class="loc-kicker">附近与常用出发地</p>
+          <div class="loc-list" id="loc-list"></div>
+        </div>
+      </aside>
+      <div class="trip-mask" id="cult-mask" hidden></div>
+      <aside class="trip-sheet" id="cult-sheet" hidden>
+        <div class="trip-view">
+          <i class="sheet-grab"></i>
+          <header>
+            <b>想体验的</b>
+            <button type="button" id="cult-close">关闭</button>
+          </header>
+          <div class="trip-picks" id="cult-picks"></div>
+          <button class="btn-primary" id="cult-plan" type="button">AI 智能编排</button>
+          <div class="trip-result" id="cult-result"></div>
+        </div>
+      </aside>
+
+      <nav class="tabbar" id="tabbar">
+        <button class="on" type="button" data-go="home"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 13.2 12 5.6l8.5 7.6"/><path d="M6.6 13.2V19h10.8v-5.8"/><path d="m10.2 6.2 1.8-2.8 1.8 2.8"/></svg></i><b>首页</b></button>
+        <button type="button" data-go="spots"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"><path d="m2.8 15.6 4.8-7.4 3.2 4.2 3.8-6.2 6.6 9.4"/><path d="M3.2 18.6c2.4-1.5 5-1 8.8-1s6.4-.5 8.8 1"/><circle cx="17.2" cy="8.2" r="1.1"/></svg></i><b>景点</b></button>
+        <button type="button" data-go="culture"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><path d="M16.8 7.2a6.6 6.6 0 1 1-3.2 11.4 4.6 4.6 0 0 1-1.4-7.6 2.6 2.6 0 0 1 1.8 3.8"/><path d="M9.2 8.4c1.6-1.2 3.6-1.5 5.2-.6"/></svg></i><b>文化</b></button>
+        <button type="button" data-go="mine"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="12" cy="7.2" r="2.3"/><path d="M8 19.2c.6-4 2.2-6 4-6s3.4 2 4 6"/><path d="M4.5 20.4c2.6-2 5.4-2.6 7.5-2.6s4.9.6 7.5 2.6"/></svg></i><b>我的</b></button>
+      </nav>
+
+      <div class="toast" id="toast">已加入想去</div>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

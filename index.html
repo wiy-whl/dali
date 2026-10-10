@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>傅怡 · 大理小程序作品集｜苍洱之间，一匹蓝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   大理小程序 · 作品集  视觉主张：苍洱之间，一匹蓝
+   色板 / 字体 完全取自原型设计系统，作品集即规范的证明
+   ============================================================ */
+:root{
+  --ink:#173b63;          /* 深靛 */
+  --ink-deep:#0f2a4a;     /* 墨蓝 */
+  --sea:#2a86c8;          /* 洱海蓝 */
+  --mist:#e8f1f8;         /* 雾蓝 */
+  --paper:#f3f5f1;        /* 生宣 */
+  --card:#fbfcf9;         /* 宣纸白 */
+  --text:rgba(15,42,74,.92);
+  --text-2:rgba(23,59,99,.58);
+  --text-3:rgba(23,59,99,.38);
+  --clay:#71322d;         /* 瓦猫朱 */
+  --clay-2:#b45a3c;       /* 陶土 */
+  --line:#dce4e8;
+  --disp:"ZCOOL XiaoWei","Noto Serif SC","Songti SC",serif;
+  --serif:"Noto Serif SC","Songti SC",serif;
+  --brush:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+  --latin:"Cormorant Garamond",Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--sea);color:#fff}
+
+/* ---- 阅读进度与侧边导航 ---- */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--sea),var(--ink));z-index:99}
+#dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:98;display:flex;flex-direction:column;gap:12px}
+#dots a{width:8px;height:8px;border-radius:50%;background:rgba(23,59,99,.22);display:block;position:relative;transition:.3s}
+#dots a.on{background:var(--sea);transform:scale(1.4)}
+#dots a i{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-style:normal;font-size:11px;letter-spacing:2px;color:var(--ink);background:rgba(251,252,249,.92);border:1px solid var(--line);padding:3px 10px;border-radius:20px;white-space:nowrap;opacity:0;pointer-events:none;transition:.25s}
+#dots a:hover i{opacity:1}
+@media(max-width:900px){#dots{display:none}}
+
+/* ---- 章节骨架 ---- */
+section{position:relative}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:6px;color:var(--text-2)}
+.kicker b{font-family:var(--latin);font-size:13px;letter-spacing:3px;color:var(--sea);font-weight:600}
+.kicker::before{content:"";width:34px;height:1px;background:var(--sea)}
+.dark .kicker{color:rgba(232,241,248,.55)}
+.dark .kicker b{color:#7db8dd}
+h2.sec{font-family:var(--disp);font-weight:400;font-size:clamp(34px,4.6vw,58px);letter-spacing:10px;line-height:1.15;margin:18px 0 8px}
+.sec-sub{font-family:var(--brush);font-size:clamp(17px,1.8vw,22px);color:var(--sea);letter-spacing:3px}
+.dark .sec-sub{color:#8fc3e6}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.rev.on{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
+
+/* ============ 01 封面 ============ */
+#cover{min-height:100vh;display:flex;align-items:stretch;position:relative;background:var(--ink-deep);overflow:hidden}
+#cover .bg{position:absolute;inset:0;background:url("assets/hero-erhai-aerial.jpg") center/cover;opacity:.85}
+#cover .veil{position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(15,42,74,.88) 0%,rgba(15,42,74,.55) 38%,rgba(15,42,74,.12) 70%),
+  linear-gradient(to top,rgba(15,42,74,.85),transparent 42%)}
+#cover .inner{position:relative;z-index:2;display:flex;width:100%;max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,56px);align-items:stretch;gap:32px}
+.cover-left{flex:1;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;padding-bottom:8vh}
+.seal{width:56px;height:56px;border-radius:14px;background:rgba(251,252,249,.94);display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:0 10px 26px rgba(0,0,0,.28)}
+.seal svg{width:32px;height:32px}
+.cover-tag{margin-top:26px;display:inline-flex;gap:10px;flex-wrap:wrap}
+.cover-tag span{font-size:12px;letter-spacing:3px;padding:7px 16px;border:1px solid rgba(255,255,255,.4);border-radius:30px;color:rgba(255,255,255,.85);backdrop-filter:blur(4px)}
+.cover-left h1{font-family:var(--disp);font-weight:400;line-height:1.04;text-shadow:0 6px 40px rgba(15,42,74,.5);margin-top:16px;display:flex;flex-direction:column}
+.cover-left h1 .l1{font-size:clamp(56px,8vw,110px);letter-spacing:clamp(8px,1.4vw,20px)}
+.cover-left h1 .l2{font-size:clamp(30px,4.2vw,58px);letter-spacing:clamp(10px,1.8vw,24px);color:#cfe6f5;margin-top:clamp(6px,1vw,14px)}
+.cover-left h1 em{font-style:normal;color:#9fd0ef}
+.cover-slogan{font-family:var(--brush);font-size:clamp(18px,2.2vw,26px);letter-spacing:5px;color:#cfe6f5;margin-top:18px}
+.cover-meta{margin-top:34px;display:flex;gap:34px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.72);letter-spacing:2px}
+.cover-meta b{display:block;color:#fff;font-weight:500;font-size:14px;margin-bottom:5px;letter-spacing:3px}
+.cover-right{writing-mode:vertical-rl;font-family:var(--brush);font-size:clamp(26px,3.4vw,44px);letter-spacing:16px;color:rgba(255,255,255,.92);text-shadow:0 4px 24px rgba(15,42,74,.6);padding-top:9vh}
+.cover-scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.75);font-size:11px;letter-spacing:5px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.cover-scroll::after{content:"";width:1px;height:42px;background:linear-gradient(rgba(255,255,255,.85),transparent);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{opacity:0}}
+.dyed-edge{position:absolute;bottom:-1px;left:0;right:0;z-index:3;line-height:0}
+.dyed-edge svg{width:100%;height:56px;display:block}
+
+/* ============ 02 项目名片 ============ */
+#card{background:var(--card);padding:clamp(72px,9vw,130px) 0 clamp(60px,7vw,100px)}
+.card-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(36px,5vw,80px);align-items:start}
+@media(max-width:880px){.card-grid{grid-template-columns:1fr}}
+.big-claim{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.7;letter-spacing:2px;margin-top:26px}
+.big-claim mark{background:linear-gradient(transparent 62%,rgba(42,134,200,.24) 62%);color:var(--ink);padding:0 2px}
+.card-intro{margin-top:26px;font-size:15px;line-height:2.1;color:var(--text-2);letter-spacing:1px;max-width:34em}
+.spec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 30px 12px;box-shadow:0 18px 40px -22px rgba(23,59,99,.25)}
+.spec dl{display:grid;grid-template-columns:76px 1fr;row-gap:0;font-size:13.5px}
+.spec dt{color:var(--text-3);letter-spacing:4px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.spec dd{color:var(--text);padding:13px 0;border-bottom:1px dashed var(--line);letter-spacing:1px}
+.spec dt:last-of-type,.spec dd:last-of-type{border-bottom:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.stat{background:var(--mist);border-radius:16px;padding:18px 10px;text-align:center}
+.stat b{font-family:var(--latin);font-size:30px;color:var(--ink);font-weight:600;display:block;line-height:1}
+.stat b i{font-style:normal;font-size:15px}
+.stat span{font-size:11.5px;letter-spacing:2px;color:var(--text-2);display:block;margin-top:8px}
+
+/* ============ 03 设计主张（暗） ============ */
+#claim{background:radial-gradient(1200px 600px at 78% 18%,rgba(42,134,200,.28),transparent 60%),linear-gradient(160deg,#0f2a4a,#173b63 62%,#1d4570);color:#fff;padding:clamp(80px,10vw,150px) 0;overflow:hidden}
+.claim-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,72px);align-items:center}
+@media(max-width:880px){.claim-grid{grid-template-columns:1fr}}
+.claim-quote{font-family:var(--brush);font-size:clamp(34px,4.6vw,60px);line-height:1.65;letter-spacing:8px;color:#eaf4fb;margin-top:30px}
+.claim-quote em{font-style:normal;color:#8fc3e6}
+.claim-note{margin-top:30px;font-size:14px;line-height:2.2;color:rgba(255,255,255,.62);letter-spacing:1.5px;max-width:32em}
+.claim-keys{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.claim-keys span{font-size:12.5px;letter-spacing:4px;padding:9px 20px;border:1px solid rgba(255,255,255,.32);border-radius:30px;color:#dcecf7}
+.claim-keys span.hot{background:var(--clay);border-color:var(--clay);color:#fff}
+.claim-visual{position:relative}
+.dye-card{border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.55);transform:rotate(2.2deg);position:relative}
+.dye-card img{width:100%;height:auto}
+.dye-card::after{content:"扎染 · 周城";position:absolute;left:18px;bottom:14px;font-family:var(--brush);font-size:18px;letter-spacing:4px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.dye-chip{position:absolute;right:-14px;top:-20px;background:var(--card);color:var(--ink);font-family:var(--latin);font-size:13px;letter-spacing:3px;padding:10px 18px;border-radius:30px;transform:rotate(-4deg);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.dye-chip2{position:absolute;left:-10px;bottom:-18px;background:var(--clay);color:#fff;font-size:12px;letter-spacing:4px;padding:10px 18px;border-radius:30px;transform:rotate(3deg);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+
+/* ---- 风花雪月走马带 ---- */
+.marquee{background:var(--ink);overflow:hidden;padding:20px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.marquee-track{display:flex;gap:64px;white-space:nowrap;animation:mq 26s linear infinite;width:max-content}
+.marquee-track span{font-family:var(--brush);font-size:30px;letter-spacing:14px;color:rgba(232,241,248,.5)}
+.marquee-track span b{color:var(--sea);font-weight:400;margin-right:14px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ 04 配色方案 ============ */
+#color{background:var(--paper);padding:clamp(80px,10vw,140px) 0}
+.color-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.color-latin{font-family:var(--latin);font-size:14px;letter-spacing:5px;color:var(--text-3);padding-bottom:10px}
+.panel{margin-top:44px;background:linear-gradient(165deg,#122c4b,#173b63);border-radius:32px;padding:clamp(26px,4vw,56px);box-shadow:0 50px 100px -40px rgba(15,42,74,.55);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(42,134,200,.35),transparent 65%)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;color:#fff;position:relative;z-index:1}
+.panel-head .t{font-family:var(--disp);font-size:clamp(24px,3vw,34px);letter-spacing:8px}
+.panel-head .t small{display:block;font-family:var(--brush);font-size:15px;letter-spacing:4px;color:#8fc3e6;margin-top:6px}
+.panel-head .r{font-family:var(--latin);letter-spacing:3px;color:rgba(255,255,255,.55);font-size:14px;text-align:right}
+.swatches{display:flex;gap:10px;margin-top:38px;position:relative;z-index:1;flex-wrap:wrap}
+.sw{flex:1 1 90px;min-width:86px;height:290px;border-radius:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.sw b{font-size:17px;font-weight:500;letter-spacing:2px;writing-mode:vertical-rl;font-family:var(--sans)}
+.sw b::before{content:"＊";display:block;margin-bottom:6px}
+.sw i{font-family:var(--latin);font-style:normal;font-size:11px;letter-spacing:1.5px;writing-mode:vertical-rl;opacity:.75;align-self:flex-end}
+.sw.dark-t{color:var(--ink-deep)}
+.sw.light-t{color:#fff}
+.ratio{margin-top:34px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;position:relative;z-index:1}
+.ratio .bar{height:10px;border-radius:6px;flex:1;display:flex;overflow:hidden;min-width:220px}
+.ratio .bar i{display:block;height:100%}
+.ratio span{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.65)}
+.color-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+@media(max-width:880px){.color-notes{grid-template-columns:1fr}}
+.cnote{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px}
+.cnote b{font-size:14px;letter-spacing:3px;color:var(--ink);display:flex;align-items:center;gap:9px}
+.cnote b::before{content:"";width:12px;height:12px;border-radius:4px;background:var(--sea)}
+.cnote:nth-child(2) b::before{background:var(--ink)}
+.cnote:nth-child(3) b::before{background:var(--clay)}
+.cnote p{margin-top:10px;font-size:13px;line-height:1.95;color:var(--text-2)}
+
+/* ============ 05 字体方案 ============ */
+#type{background:var(--card);padding:clamp(80px,10vw,140px) 0}
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:46px}
+@media(max-width:880px){.type-grid{grid-template-columns:1fr}}
+.tcard{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:30px 30px 26px;position:relative;overflow:hidden;transition:.35s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 26px 50px -24px rgba(23,59,99,.3)}
+.tcard .role{font-size:11px;letter-spacing:4px;color:var(--sea);border:1px solid rgba(42,134,200,.4);padding:4px 12px;border-radius:20px}
+.tcard .demo{margin-top:22px;color:var(--ink);line-height:1.25}
+.tcard .demo.latin{font-family:var(--latin);font-size:44px;font-weight:600;letter-spacing:2px}
+.tcard .demo.brush{font-family:var(--brush);font-size:46px;letter-spacing:6px}
+.tcard .demo.disp{font-family:var(--disp);font-size:44px;letter-spacing:6px}
+.tcard .demo.body{font-family:var(--sans);font-size:17px;line-height:1.9;font-weight:400}
+.tcard .fname{margin-top:16px;font-size:13.5px;color:var(--text-2);letter-spacing:1px;display:flex;justify-content:space-between;align-items:center}
+.tcard .fname em{font-style:normal;font-family:var(--latin);color:var(--text-3);font-size:12px;letter-spacing:2px}
+.ladder{margin-top:26px;background:var(--mist);border-radius:22px;padding:34px clamp(24px,4vw,48px);display:flex;align-items:baseline;gap:clamp(20px,4vw,56px);flex-wrap:wrap}
+.ladder div{color:var(--ink)}
+.ladder .s1{font-family:var(--disp);font-size:44px;letter-spacing:6px}
+.ladder .s2{font-family:var(--serif);font-weight:700;font-size:28px}
+.ladder .s3{font-size:17px;font-weight:500}
+.ladder .s4{font-size:13px;color:var(--text-2)}
+.ladder small{display:block;font-family:var(--latin);font-size:11px;letter-spacing:2px;color:var(--text-3);margin-top:8px}
+
+/* ============ 06 版式方案 ============ */
+#layout{background:var(--mist);padding:clamp(80px,10vw,140px) 0}
+.lay-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,64px);margin-top:46px;align-items:center}
+@media(max-width:960px){.lay-grid{grid-template-columns:1fr}}
+.wire{background:var(--card);border-radius:26px;padding:clamp(22px,3vw,40px);box-shadow:0 30px 60px -30px rgba(23,59,99,.3)}
+.wire svg{width:100%;height:auto;display:block}
+.lay-rules{display:flex;flex-direction:column;gap:14px}
+.rule{display:flex;gap:18px;background:var(--card);border-radius:18px;padding:22px 24px;border:1px solid rgba(220,228,232,.7)}
+.rule .no{font-family:var(--latin);font-size:26px;color:var(--sea);font-weight:600;line-height:1;min-width:40px}
+.rule b{font-size:15px;letter-spacing:2px;color:var(--ink);display:block;margin-bottom:6px}
+.rule p{font-size:13px;line-height:1.9;color:var(--text-2)}
+.tokens{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.tokens span{font-family:var(--latin);font-size:12px;letter-spacing:1px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 13px;color:var(--text-2)}
+
+/* ============ 07 设计目标（挂签） ============ */
+#goals{background:linear-gradient(180deg,#0f2a4a,#143455 55%,#173b63);color:#fff;padding:clamp(84px,10vw,150px) 0 clamp(90px,11vw,160px);overflow:hidden}
+.goal-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+@media(max-width:880px){.goal-chips{grid-template-columns:1fr}}
+.gchip{border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:12px 16px;font-size:13px;letter-spacing:4px;color:rgba(255,255,255,.78);text-align:center;position:relative}
+.gchip::after{content:"";position:absolute;bottom:-13px;left:50%;width:1px;height:12px;background:rgba(255,255,255,.3)}
+.tags-row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,4vw,54px);margin-top:74px;align-items:start}
+@media(max-width:880px){.tags-row{grid-template-columns:1fr;justify-items:center}}
+.tag{position:relative;text-align:center;padding-top:34px}
+.tag .string{position:absolute;top:0;left:50%;width:2px;height:44px;background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.25));transform:translateX(-50%) rotate(4deg);border-radius:2px}
+.tag .body{position:relative;padding:clamp(28px,3vw,42px) clamp(18px,2.4vw,34px);color:#fff;box-shadow:0 26px 50px -18px rgba(0,0,0,.5)}
+.tag .body::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:rgba(15,42,74,.85);box-shadow:inset 0 2px 4px rgba(0,0,0,.5),0 0 0 3px rgba(255,255,255,.35)}
+.tag h3{font-family:var(--disp);font-size:clamp(22px,2.4vw,30px);letter-spacing:6px;font-weight:400}
+.tag p{font-family:var(--brush);font-size:15px;letter-spacing:3px;margin-top:10px;opacity:.92}
+.t1 .body{background:linear-gradient(150deg,#2a86c8,#1d6ba8);clip-path:polygon(50% 0,100% 18%,96% 100%,4% 100%,0 18%);transform:rotate(-2.5deg)}
+.t2 .body{background:linear-gradient(150deg,#b45a3c,#8f3f2a);clip-path:polygon(50% 0,61% 12%,79% 6%,87% 24%,100% 33%,94% 52%,100% 72%,86% 81%,84% 98%,63% 95%,50% 100%,37% 95%,16% 98%,14% 81%,0 72%,6% 52%,0 33%,13% 24%,21% 6%,39% 12%);transform:rotate(1.6deg)}
+.t3 .body{background:linear-gradient(150deg,#f0b24a,#dd9630);color:#3c2a12;clip-path:polygon(12% 0,88% 0,100% 22%,100% 100%,0 100%,0 22%);transform:rotate(-1.2deg)}
+.t3 .body::before{background:rgba(60,42,18,.7)}
+.trade{margin-top:80px;background:rgba(251,252,249,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:clamp(26px,4vw,44px);backdrop-filter:blur(2px)}
+.trade h3{font-family:var(--disp);font-size:20px;letter-spacing:6px;color:#9fd0ef;font-weight:400;display:flex;align-items:center;gap:14px}
+.trade h3::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.15)}
+.trade ul{list-style:none;margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px 34px}
+@media(max-width:880px){.trade ul{grid-template-columns:1fr}}
+.trade li{font-size:13.5px;line-height:1.9;color:rgba(255,255,255,.75);padding-left:26px;position:relative;letter-spacing:1px}
+.trade li::before{content:"✕";position:absolute;left:0;top:0;color:var(--clay-2);font-family:var(--latin)}
+.trade li b{color:#fff;font-weight:500}
+.trade li s{text-decoration:none;color:rgba(255,255,255,.4);text-decoration:line-through}
+
+/* ============ 08 信息架构 ============ */
+#flow{background:var(--paper);padding:clamp(80px,10vw,140px) 0}
+.flowline{margin-top:56px;display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:10px}
+.fnode{min-width:196px;flex:1;position:relative;padding:26px 22px 24px;background:var(--card);border:1px solid var(--line);border-radius:18px;margin-right:34px}
+.fnode:last-child{margin-right:0}
+.fnode::after{content:"→";position:absolute;right:-27px;top:50%;transform:translateY(-50%);font-family:var(--latin);color:var(--sea);font-size:20px}
+.fnode:last-child::after{display:none}
+.fnode .lv{font-family:var(--latin);font-size:11px;letter-spacing:3px;color:var(--text-3)}
+.fnode b{display:block;font-family:var(--disp);font-size:19px;letter-spacing:4px;color:var(--ink);margin-top:8px;font-weight:400}
+.fnode p{font-size:12px;color:var(--text-2);margin-top:8px;line-height:1.8;letter-spacing:1px}
+.fnode.hot{background:var(--ink);border-color:var(--ink);color:#fff}
+.fnode.hot b{color:#9fd0ef}
+.fnode.hot p{color:rgba(255,255,255,.65)}
+.fnode.hot .lv{color:rgba(255,255,255,.4)}
+.ia{margin-top:40px;background:var(--ink-deep);border-radius:24px;padding:clamp(26px,4vw,44px);color:#cfe2f2;display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+@media(max-width:880px){.ia{grid-template-columns:1fr}}
+.ia .t{font-family:var(--disp);font-size:20px;letter-spacing:6px;color:#fff;font-weight:400;writing-mode:vertical-rl;height:150px}
+.ia pre{font-family:var(--sans);font-size:13.5px;line-height:2.15;letter-spacing:2px;white-space:pre-wrap;color:rgba(232,241,248,.85)}
+.ia pre b{color:#8fc3e6;font-weight:500}
+
+/* ============ 09 界面一览（手机墙） ============ */
+#screens{background:linear-gradient(150deg,#e9f2f8,#dcebf4);padding:clamp(80px,10vw,140px) 0 clamp(70px,8vw,110px)}
+.wall-board{margin-top:52px;background:linear-gradient(165deg,#10263f,#173b63 70%);border-radius:40px;padding:clamp(30px,5vw,64px) clamp(20px,4vw,56px) clamp(40px,5vw,72px);box-shadow:0 60px 120px -50px rgba(15,42,74,.6);position:relative;overflow:hidden}
+.wall-board::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(500px 300px at 12% 8%,rgba(42,134,200,.3),transparent 60%),
+  radial-gradient(600px 340px at 88% 90%,rgba(42,134,200,.22),transparent 60%);pointer-events:none}
+.wall-head{display:flex;justify-content:space-between;align-items:center;color:#fff;position:relative;z-index:1;flex-wrap:wrap;gap:12px}
+.wall-head .t{font-family:var(--disp);font-size:clamp(24px,3vw,34px);letter-spacing:8px}
+.wall-head .t small{display:block;font-family:var(--brush);font-size:15px;letter-spacing:4px;color:#8fc3e6;margin-top:6px}
+.wall-head .badge{font-family:var(--latin);letter-spacing:3px;font-size:13px;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.3);padding:8px 18px;border-radius:26px}
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2.4vw,30px);margin-top:46px;position:relative;z-index:1;align-items:flex-start}
+.ph{width:clamp(140px,15.5vw,196px);border-radius:26px;overflow:hidden;border:5px solid #0b1a2e;background:#0b1a2e;box-shadow:0 30px 55px -22px rgba(0,0,0,.65);position:relative;transition:transform .4s ease}
+.ph img{width:100%;height:auto}
+.ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 9px;font-size:11px;letter-spacing:3px;color:#fff;background:linear-gradient(transparent,rgba(11,26,46,.88));text-align:center}
+.ph:hover{transform:translateY(-8px) rotate(0deg)!important}
+.ph:nth-child(3n){transform:rotate(1.6deg) translateY(14px)}
+.ph:nth-child(3n+1){transform:rotate(-1.8deg) translateY(6px)}
+.ph:nth-child(4n){transform:rotate(1deg) translateY(-6px)}
+.wall-note{margin-top:34px;text-align:center;font-size:12px;letter-spacing:4px;color:rgba(255,255,255,.5);position:relative;z-index:1}
+
+/* ============ 10 核心拆解 ============ */
+#anatomy{background:var(--paper);padding:clamp(80px,10vw,140px) 0}
+.ana{display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-top:56px}
+.ana.flip{grid-template-columns:1fr auto}
+@media(max-width:960px){.ana,.ana.flip{grid-template-columns:1fr;justify-items:center}}
+.device{width:clamp(240px,26vw,300px);border-radius:40px;border:8px solid #10233c;background:#10233c;box-shadow:0 50px 90px -34px rgba(15,42,74,.55);position:relative;flex-shrink:0}
+.device::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:86px;height:20px;background:#10233c;border-radius:0 0 12px 12px;z-index:2}
+.device img{border-radius:32px;width:100%}
+.float-crop{position:absolute;width:34%;border-radius:12px;overflow:hidden;box-shadow:0 24px 48px -14px rgba(15,42,74,.5);border:4px solid var(--card);z-index:3}
+.fc-tr{right:-11%;top:7%;transform:rotate(3deg)}
+.fc-bl{left:-11%;bottom:7%;transform:rotate(-3deg)}
+.ana-body .no{font-family:var(--latin);font-size:15px;letter-spacing:4px;color:var(--sea)}
+.ana-body h3{font-family:var(--disp);font-size:clamp(26px,3vw,38px);letter-spacing:8px;font-weight:400;color:var(--ink);margin-top:10px}
+.ana-body .en{font-family:var(--latin);letter-spacing:4px;color:var(--text-3);font-size:13px;margin-top:6px}
+.ana-body>p{margin-top:18px;font-size:14px;line-height:2.05;color:var(--text-2);max-width:36em;letter-spacing:1px}
+.psr{margin-top:26px;display:flex;flex-direction:column;gap:10px;max-width:560px}
+.psr div{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.psr b{font-size:12px;letter-spacing:4px;color:var(--sea);font-weight:500}
+.psr div:nth-child(2) b{color:var(--clay-2)}
+.psr div:nth-child(3) b{color:#2ba471}
+.psr p{font-size:13px;line-height:1.85;color:var(--text-2);letter-spacing:.5px}
+.ana-dark{background:linear-gradient(150deg,#122c4b,#173b63);border-radius:32px;padding:clamp(34px,5vw,64px);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,72px);align-items:center;margin-top:70px}
+@media(max-width:960px){.ana-dark{grid-template-columns:1fr;justify-items:center}}
+.ana-dark h3{color:#fff}
+.ana-dark .psr div{background:rgba(251,252,249,.07);border-color:rgba(255,255,255,.14)}
+.ana-dark .psr p{color:rgba(255,255,255,.75)}
+.ana-dark>p{color:rgba(255,255,255,.65)}
+
+/* ============ 11 符号 → UI ============ */
+#symbol{background:var(--card);padding:clamp(80px,10vw,140px) 0}
+.sym-row{display:grid;grid-template-columns:150px 1fr;gap:clamp(20px,4vw,56px);align-items:center;padding:30px 0;border-bottom:1px dashed var(--line)}
+.sym-row:first-of-type{margin-top:40px}
+@media(max-width:760px){.sym-row{grid-template-columns:110px 1fr}}
+.sym-src{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.sym-src .pic{width:110px;height:110px;border-radius:50%;overflow:hidden;box-shadow:0 16px 34px -12px rgba(23,59,99,.35);border:3px solid var(--mist);background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.sym-src .pic svg{width:56px;height:56px}
+.sym-src .pic img{width:100%;height:100%;object-fit:cover}
+.sym-src span{font-size:12.5px;letter-spacing:4px;color:var(--text-2)}
+.sym-arrow{align-self:center;font-family:var(--latin);color:var(--sea);font-size:22px;padding-right:clamp(6px,2vw,20px)}
+.sym-map{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.sym-map{grid-template-columns:1fr}}
+.smap{background:var(--mist);border-radius:16px;padding:18px 20px}
+.smap b{font-size:13.5px;letter-spacing:2px;color:var(--ink);display:block}
+.smap p{font-size:12.5px;line-height:1.85;color:var(--text-2);margin-top:7px}
+.sym-principle{margin-top:34px;text-align:center;font-family:var(--brush);font-size:clamp(19px,2.4vw,26px);letter-spacing:5px;color:var(--ink)}
+.sym-principle em{font-style:normal;color:var(--clay-2)}
+
+/* ============ 12 交互原型 ============ */
+#proto{background:radial-gradient(900px 500px at 22% 10%,rgba(42,134,200,.3),transparent 60%),linear-gradient(165deg,#0f2a4a,#173b63);color:#fff;padding:clamp(84px,10vw,150px) 0}
+.proto-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(36px,5vw,80px);margin-top:54px;align-items:center}
+@media(max-width:960px){.proto-grid{grid-template-columns:1fr;justify-items:center}}
+.proto-frame{width:clamp(250px,26vw,310px);border-radius:44px;border:9px solid #0b1a2e;background:#0b1a2e;box-shadow:0 60px 110px -36px rgba(0,0,0,.7);position:relative;overflow:hidden}
+.proto-frame iframe{width:100%;height:640px;border:0;border-radius:36px;background:#0b1a2e;display:block}
+.proto-info h3{font-family:var(--disp);font-size:clamp(24px,2.8vw,34px);letter-spacing:7px;font-weight:400;color:#fff}
+.proto-info .en{font-family:var(--latin);letter-spacing:4px;color:rgba(255,255,255,.5);font-size:13px;margin-top:8px}
+.proto-info p{margin-top:20px;font-size:14px;line-height:2.1;color:rgba(255,255,255,.68);max-width:34em;letter-spacing:1px}
+.try{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+.try span{font-size:12px;letter-spacing:3px;padding:8px 16px;border-radius:22px;background:rgba(251,252,249,.09);border:1px solid rgba(255,255,255,.2);color:#dcecf7}
+.proto-btn{margin-top:34px;display:inline-flex;align-items:center;gap:14px;background:var(--card);color:var(--ink);font-size:14px;letter-spacing:4px;padding:16px 34px;border-radius:34px;text-decoration:none;font-weight:500;box-shadow:0 20px 44px -14px rgba(0,0,0,.5);transition:.3s;border:0;cursor:pointer;font-family:var(--sans)}
+.proto-btn:hover{transform:translateY(-3px);box-shadow:0 28px 54px -14px rgba(0,0,0,.55)}
+.proto-btn::after{content:"⤢";font-family:var(--latin)}
+.proto-cta{margin-top:34px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.proto-cta .proto-btn{margin-top:0}
+.proto-link{font-size:13px;letter-spacing:3px;color:rgba(255,255,255,.72);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:4px;transition:.25s}
+.proto-link:hover{color:#fff;border-color:#fff}
+.proto-tip{margin-top:16px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.42)}
+
+/* ---- 全屏原型模式（不依赖弹窗，任何环境都能点开） ---- */
+#protoModal{position:fixed;inset:0;z-index:200;display:none;background:rgba(8,20,36,.92);backdrop-filter:blur(10px);opacity:0;transition:opacity .35s ease}
+#protoModal.on{display:flex;opacity:1;flex-direction:column}
+.pm-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px clamp(16px,3vw,34px);color:#fff;border-bottom:1px solid rgba(255,255,255,.12);flex-wrap:wrap}
+.pm-bar .tt{font-family:var(--disp);font-size:17px;letter-spacing:5px}
+.pm-bar .tt small{display:block;font-family:var(--latin);font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.45);margin-top:4px}
+.pm-bar .acts{display:flex;align-items:center;gap:12px}
+.pm-bar a,.pm-bar button{font-family:var(--sans);font-size:12.5px;letter-spacing:3px;padding:10px 20px;border-radius:24px;cursor:pointer;text-decoration:none;transition:.25s;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff}
+.pm-bar a:hover,.pm-bar button:hover{background:var(--card);color:var(--ink);border-color:var(--card)}
+.pm-stage{flex:1;display:flex;gap:clamp(16px,3vw,40px);align-items:center;justify-content:center;padding:clamp(16px,3vw,34px);overflow:auto}
+.pm-phone{width:375px;height:min(812px,calc(100vh - 190px));border-radius:44px;border:10px solid #0b1a2e;background:#0b1a2e;box-shadow:0 50px 110px -30px rgba(0,0,0,.85);position:relative;flex-shrink:0}
+.pm-phone iframe{width:100%;height:100%;border:0;border-radius:36px;background:#0b1a2e;display:block}
+.pm-side{max-width:280px;color:rgba(255,255,255,.72);font-size:13px;line-height:2.1;letter-spacing:1px}
+.pm-side b{display:block;color:#fff;font-family:var(--disp);font-size:16px;letter-spacing:5px;margin-bottom:14px}
+.pm-side ol{margin:0;padding-left:18px}
+.pm-side li{margin-bottom:8px}
+@media(max-width:820px){.pm-side{display:none}.pm-phone{width:min(375px,88vw)}}
+
+/* ============ 13 收束 ============ */
+#contact{background:var(--paper);padding:clamp(80px,10vw,140px) 0 0;overflow:hidden}
+.end-quote{font-family:var(--brush);font-size:clamp(28px,4vw,46px);letter-spacing:8px;color:var(--ink);text-align:center;margin-top:30px}
+.end-quote em{font-style:normal;color:var(--sea)}
+.reflect{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:880px){.reflect{grid-template-columns:1fr}}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px}
+.rcard b{font-family:var(--disp);font-size:17px;letter-spacing:4px;color:var(--ink);font-weight:400;display:flex;gap:10px;align-items:center}
+.rcard b i{font-style:normal;font-family:var(--latin);font-size:13px;color:var(--sea)}
+.rcard p{margin-top:12px;font-size:13px;line-height:2;color:var(--text-2)}
+footer{margin-top:clamp(70px,9vw,120px);background:var(--ink);color:#fff;padding:clamp(48px,6vw,72px) 0 34px}
+.f-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.f-name{font-family:var(--disp);font-size:clamp(34px,4.5vw,54px);letter-spacing:12px;font-weight:400}
+.f-name small{display:block;font-family:var(--brush);font-size:16px;letter-spacing:5px;color:#8fc3e6;margin-top:10px}
+.f-info{text-align:right;font-size:13px;line-height:2.3;color:rgba(255,255,255,.65);letter-spacing:2px}
+.f-info b{color:#fff;font-weight:500;letter-spacing:3px}
+.f-bottom{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--latin);font-size:11.5px;letter-spacing:3px;color:rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<nav id="dots" aria-label="章节导航"></nav>
+
+<!-- ========== 01 封面 ========== -->
+<section id="cover">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="cover-left">
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M18 26L22 10l10 14 10-14 4 16" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 30c0 12 5 22 12 22s12-10 12-22c0-6-4-10-12-10s-12 4-12 10z" stroke="currentColor" stroke-width="2.4"/><circle cx="27" cy="28" r="1.6" fill="currentColor"/><circle cx="37" cy="28" r="1.6" fill="currentColor"/><path d="M30 33h4M24 48c4 4 12 4 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cover-tag rev on"><span>微信小程序</span><span>独立完成</span><span>界面 · 视觉 · 交互</span></div>
+      <h1 class="rev on d1"><span class="l1">大理<em>.</em></span><span class="l2">风起的时候</span></h1>
+      <div class="cover-slogan rev on d2">把苍山洱海，滤成可逛的一条路 —— 一匹蓝布上的文化体验</div>
+      <div class="cover-meta rev on d3">
+        <div><b>傅怡 FUYI</b>UI / 视觉设计 · 应届实习</div>
+        <div><b>DA LI · ERHAI</b>文化信息体验设计</div>
+        <div><b>2026</b>Figma / PS / AI 辅助</div>
+      </div>
+    </div>
+    <div class="cover-right">风 · 花 · 雪 · 月</div>
+  </div>
+  <div class="cover-scroll">SCROLL</div>
+  <div class="dyed-edge"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,30 C120,8 240,44 380,26 C520,8 640,48 780,30 C920,12 1040,46 1180,28 C1300,14 1380,36 1440,24 L1440,56 L0,56 Z" fill="#fbfcf9"/></svg></div>
+</section>
+
+<!-- ========== 02 项目名片 ========== -->
+<section id="card">
+  <div class="wrap">
+    <div class="kicker rev"><b>01 / PROFILE</b>项目名片</div>
+    <div class="card-grid">
+      <div>
+        <div class="big-claim rev d1">一座城的文旅信息，散落在攻略、社交与各种入口里。<br/>这个小程序把它们<mark>滤成一条蓝白的路</mark>——先看懂，再出发。</div>
+        <p class="card-intro rev d2">面向 18–30 岁的短途游客与文化兴趣用户：要快、要美、要少踩坑。项目从大理文化符号（瓦猫、扎染、屋檐、茶）出发，建立可识别的蓝白视觉语言，完成「引导 → 首页 → 景点 / 文化 / 文创 → 行程 / 收藏」的完整小程序体验，并附可交互原型。</p>
+      </div>
+      <div class="rev d2">
+        <div class="spec">
+          <dl>
+            <dt>项目</dt><dd>大理 · 文化信息体验（微信小程序）</dd>
+            <dt>角色</dt><dd>界面与视觉设计 · 独立完成</dd>
+            <dt>时间</dt><dd>2026</dd>
+            <dt>工具</dt><dd>Figma / Photoshop / Illustrator / AI 辅助</dd>
+            <dt>交付</dt><dd>高保真界面 + 设计规范 + 可交互原型</dd>
+          </dl>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>5<i>+</i></b><span>核心模块</span></div>
+          <div class="stat"><b>20<i>+</i></b><span>高保真界面</span></div>
+          <div class="stat"><b>4</b><span>文化符号资产</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03 设计主张 ========== -->
+<section id="claim" class="dark">
+  <div class="wrap">
+    <div class="claim-grid">
+      <div>
+        <div class="kicker rev"><b>02 / CONCEPT</b>设计主张</div>
+        <div class="claim-quote rev d1">苍洱之间，<br/><em>一匹蓝。</em></div>
+        <p class="claim-note rev d2">整个产品的视觉，就是一块扎染蓝布：深靛是布的底色，雾蓝是浸出来的水痕，宣纸白是留出的空。文化感不靠民族纹样堆砌，靠蓝白的浓淡、留白的呼吸、笔触的手感——让「逛」这件事本身像在布上行走。</p>
+        <div class="claim-keys rev d3">
+          <span>扎染气质</span><span>留白呼吸</span><span>笔触手感</span><span class="hot">符号服务功能</span>
+        </div>
+      </div>
+      <div class="claim-visual rev d2">
+        <div class="dye-card"><img src="assets/hero-tiedye.jpg" alt="扎染布细节"/></div>
+        <div class="dye-chip">INDIGO · TIE-DYE</div>
+        <div class="dye-chip2">周城手作</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 风花雪月走马带 -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><b>风</b>下关风</span><span><b>花</b>上关花</span><span><b>雪</b>苍山雪</span><span><b>月</b>洱海月</span>
+    <span><b>风</b>下关风</span><span><b>花</b>上关花</span><span><b>雪</b>苍山雪</span><span><b>月</b>洱海月</span>
+  </div>
+</div>
+
+<!-- ========== 04 配色方案 ========== -->
+<section id="color">
+  <div class="wrap">
+    <div class="color-head">
+      <div>
+        <div class="kicker rev"><b>03 / COLOR</b>配色方案</div>
+        <h2 class="sec rev d1">一匹蓝，七个浓度</h2>
+        <div class="sec-sub rev d2">从布底到水痕，蓝的浓淡就是信息的层级</div>
+      </div>
+      <div class="color-latin rev d2">INDIGO SYSTEM · 7 STEPS</div>
+    </div>
+    <div class="panel rev d2">
+      <div class="panel-head">
+        <div class="t">品牌色<small>大理 · 文化信息体验</small></div>
+        <div class="r">DALI<br/>MINI PROGRAM</div>
+      </div>
+      <div class="swatches">
+        <div class="sw dark-t" style="background:#FBFCF9"><b>宣纸白</b><i>#FBFCF9</i></div>
+        <div class="sw dark-t" style="background:#F3F5F1"><b>生宣米</b><i>#F3F5F1</i></div>
+        <div class="sw dark-t" style="background:#E8F1F8"><b>雾蓝</b><i>#E8F1F8</i></div>
+        <div class="sw light-t" style="background:#2A86C8"><b>洱海蓝</b><i>#2A86C8</i></div>
+        <div class="sw light-t" style="background:#173B63"><b>深靛</b><i>#173B63</i></div>
+        <div class="sw light-t" style="background:#0F2A4A"><b>墨蓝</b><i>#0F2A4A</i></div>
+        <div class="sw light-t" style="background:#71322D"><b>瓦猫朱</b><i>#71322D</i></div>
+      </div>
+      <div class="ratio rev d3">
+        <div class="bar">
+          <i style="flex:6;background:#FBFCF9"></i>
+          <i style="flex:2;background:#E8F1F8"></i>
+          <i style="flex:1.2;background:#2A86C8"></i>
+          <i style="flex:.8;background:#173B63"></i>
+          <i style="flex:.25;background:#71322D"></i>
+        </div>
+        <span>白与雾蓝承载 80% 的界面 · 蓝只做点睛 · 朱不过 3%</span>
+      </div>
+    </div>
+    <div class="color-notes">
+      <div class="cnote rev"><b>底色层</b><p>宣纸白 / 生宣米做页面与卡片底，暖一点的米色抵消蓝色的冷，屏幕上更接近纸感。</p></div>
+      <div class="cnote rev d1"><b>信息层</b><p>墨蓝做正文与标题，深靛做强调与深色板块；洱海蓝只用于交互点——按钮、链接、选中态。</p></div>
+      <div class="cnote rev d2"><b>温度层</b><p>瓦猫朱取自屋脊陶土，仅出现在瓦猫、提醒、情绪点等极小面积上，像布上的一枚印。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 05 字体方案 ========== -->
+<section id="type">
+  <div class="wrap">
+    <div class="kicker rev"><b>04 / TYPE</b>字体方案</div>
+    <h2 class="sec rev d1">笔锋定调，字距见文化</h2>
+    <div class="sec-sub rev d1">三种字，各司其职：看气质、说人话、管信息</div>
+    <div class="type-grid">
+      <div class="tcard rev">
+        <span class="role">展示 · 标题</span>
+        <div class="demo disp">苍山不墨千秋画</div>
+        <div class="fname">站酷小薇 ZCOOL XiaoWei<em>SECTIONS / TITLES</em></div>
+      </div>
+      <div class="tcard rev d1">
+        <span class="role">笔触 · 情绪</span>
+        <div class="demo brush">风起的时候</div>
+        <div class="fname">马善政毛笔 Ma Shan Zheng<em>SLOGAN / MOOD</em></div>
+      </div>
+      <div class="tcard rev d2">
+        <span class="role">拉丁 · 数字</span>
+        <div class="demo latin">ERHAI · 3–4 H</div>
+        <div class="fname">Cormorant Garamond<em>LATIN / NUMERALS</em></div>
+      </div>
+      <div class="tcard rev d3">
+        <span class="role">正文 · 信息</span>
+        <div class="demo body">洱海，半日，湖景，新手友好。第一次来大理，用半天把这片蓝看进心里，不必绕完整个湖。</div>
+        <div class="fname">思源黑体 Noto Sans SC<em>BODY / UI TEXT</em></div>
+      </div>
+    </div>
+    <div class="ladder rev d2">
+      <div class="s1">洱海<small>H1 · 34PX / 站酷小薇</small></div>
+      <div class="s2">值得先看<small>H2 · 24PX / 思源宋</small></div>
+      <div class="s3">洱海，半日，湖景<small>BODY · 17PX / 思源黑</small></div>
+      <div class="s4">东门约 20 分钟<small>CAPTION · 13PX</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 06 版式方案 ========== -->
+<section id="layout">
+  <div class="wrap">
+    <div class="kicker rev"><b>05 / LAYOUT</b>版式方案</div>
+    <h2 class="sec rev d1">布上留白，卡上生活</h2>
+    <div class="sec-sub rev d1">一套 8pt 栅格 + 卡片语言，撑起 20+ 屏的一致</div>
+    <div class="lay-grid">
+      <div class="wire rev d1">
+        <svg viewBox="0 0 520 400" fill="none">
+          <rect x="150" y="10" width="220" height="380" rx="28" fill="#F3F5F1" stroke="#173B63" stroke-width="2"/>
+          <rect x="150" y="10" width="220" height="88" rx="28" fill="#173B63"/>
+          <rect x="150" y="70" width="220" height="28" fill="#173B63"/>
+          <text x="170" y="52" font-size="13" fill="#E8F1F8" font-family="serif" letter-spacing="4">风起的时候</text>
+          <rect x="166" y="118" width="91" height="74" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="263" y="118" width="91" height="74" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="166" y="208" width="188" height="86" rx="10" fill="#FBFCF9" stroke="#DCE4E8"/>
+          <rect x="166" y="310" width="188" height="60" rx="30" fill="#2A86C8"/>
+          <text x="236" y="346" font-size="12" fill="#fff" text-anchor="middle" letter-spacing="3">开始逛</text>
+          <line x1="150" y1="110" x2="370" y2="110" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="166" y1="10" x2="166" y2="390" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="354" y1="10" x2="354" y2="390" stroke="#B45A3C" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="16" y="120" font-size="11" fill="#71322D" letter-spacing="1">内容安全区 16px</text>
+          <text x="16" y="140" font-size="11" fill="#71322D" letter-spacing="1">页边距 16 / 卡距 8</text>
+          <text x="16" y="230" font-size="11" fill="#2A86C8" letter-spacing="1">8pt 栅格</text>
+          <text x="16" y="250" font-size="11" fill="#2A86C8" letter-spacing="1">卡片圆角 12–16</text>
+          <text x="16" y="330" font-size="11" fill="#173B63" letter-spacing="1">主按钮全宽 52px</text>
+        </svg>
+      </div>
+      <div class="lay-rules">
+        <div class="rule rev"><div class="no">a</div><div><b>符号服务功能，不做满屏装饰</b><p>瓦猫只在 Logo、空状态、加载里出现；扎染只做氛围层。装饰永远给信息让路。</p></div></div>
+        <div class="rule rev d1"><div class="no">b</div><div><b>卡片化信息，一眼一层</b><p>每个卡片只回答一个问题：这是什么 / 要多久 / 怎么去。层级靠蓝的浓淡与字重，不靠线框堆叠。</p></div></div>
+        <div class="rule rev d2"><div class="no">c</div><div><b>手感细节：笔触、圆角、微投影</b><p>大圆角 + 极轻投影 + 手写体点缀，模拟纸布的柔软；关键动效只做淡入与位移，克制不花。</p></div></div>
+        <div class="tokens rev d3"><span>8pt grid</span><span>radius 12–16</span><span>shadow 0 14 30 -10</span><span>space ×1/2/3</span><span>screen 375</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 07 设计目标 ========== -->
+<section id="goals" class="dark">
+  <div class="wrap">
+    <div class="kicker rev"><b>06 / GOALS</b>设计目标</div>
+    <h2 class="sec rev d1">三个目标，三枚签</h2>
+    <div class="sec-sub rev d1">每一枚都对应一组可检验的标准</div>
+    <div class="goal-chips">
+      <div class="gchip rev">统一品牌风 · 换新视觉感</div>
+      <div class="gchip rev d1">重构信息流 · 主次分明</div>
+      <div class="gchip rev d2">优化新体验 · 长效想再来</div>
+    </div>
+    <div class="tags-row">
+      <div class="tag t1 rev"><div class="string"></div><div class="body"><h3>品牌视觉</h3><p>扎染蓝白 · 打造可识别</p></div></div>
+      <div class="tag t2 rev d1"><div class="string"></div><div class="body"><h3>信息层级</h3><p>先看懂 · 再出发</p></div></div>
+      <div class="tag t3 rev d2"><div class="string"></div><div class="body"><h3>用户留存</h3><p>行程与收藏 · 带得走</p></div></div>
+    </div>
+    <div class="trade rev d2">
+      <h3>取 舍 —— 明确不做什么</h3>
+      <ul>
+        <li><b>不做浓重民族风堆砌</b>——纹样满屏会杀死可读性，<s>大面积图腾底纹</s> 换成蓝白浓淡与少量笔触。</li>
+        <li><b>不做大而全的攻略堆料</b>——<s>长列表 + 全筛选器</s> 换成精选卡片 + 一次只回答一个问题。</li>
+        <li><b>不做重运营弹窗与红点</b>——文旅场景要「松弛」，<s>首屏 banner 轮播</s> 换成一张定调的氛围图。</li>
+        <li><b>不做孤立的品牌秀</b>——瓦猫与扎染必须进入真实界面与状态流，<s>单独的 IP 展示页</s>。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 08 信息架构 ========== -->
+<section id="flow">
+  <div class="wrap">
+    <div class="kicker rev"><b>07 / FLOW</b>信息架构与主路径</div>
+    <h2 class="sec rev d1">一条主路，三次分发</h2>
+    <div class="sec-sub rev d1">引导定调 → 首页分发 → 内容详情 → 带得走</div>
+    <div class="flowline">
+      <div class="fnode hot rev"><div class="lv">STEP 01</div><b>引导页</b><p>一匹蓝布定调<br/>「开始逛」单按钮</p></div>
+      <div class="fnode rev d1"><div class="lv">STEP 02</div><b>首页</b><p>风起的时候<br/>景点 / 文化 / 文创 三卡分发</p></div>
+      <div class="fnode rev d2"><div class="lv">STEP 03</div><b>景点</b><p>六个去处 · 时长与方位<br/>一键加入行程</p></div>
+      <div class="fnode rev d3"><div class="lv">STEP 04</div><b>文化 / 文创</b><p>在哪里遇见 · 怎么带走<br/>收藏与加购</p></div>
+      <div class="fnode rev d4"><div class="lv">STEP 05</div><b>旅人</b><p>想去的地方 · 最近看过<br/>行程单沉淀</p></div>
+    </div>
+    <div class="ia rev d2">
+      <div class="t">信息架构</div>
+      <pre><b>首页</b>
+├─ <b>景点一览</b>   洱海 / 喜洲古镇 / 双廊 / 崇圣寺三塔 / 苍山 …
+├─ <b>大理文化</b>   扎染 / 瓦猫 / 三道茶 / 火塘 → 在哪里遇见（喜洲·周城·古城）
+├─ <b>文创好物</b>   进包（方巾）/ 掌心（瓦猫小偶）/ 坐下（小院慢坐）
+├─ <b>云上特展</b>   一叶舟一片浪 · 数字展厅（气质入口）
+└─ <b>旅人</b>       想去的地方 / 浏览记录 / 行程单</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 09 界面一览 ========== -->
+<section id="screens">
+  <div class="wrap">
+    <div class="kicker rev"><b>08 / SCREENS</b>界面一览</div>
+    <h2 class="sec rev d1">铺开这一匹蓝</h2>
+    <div class="sec-sub rev d1">15 个关键屏 · 同一套蓝白与卡片语言</div>
+  </div>
+  <div class="wrap">
+    <div class="wall-board rev d1">
+      <div class="wall-head">
+        <div class="t">界面预览<small>大理 · 风起的时候</small></div>
+        <div class="badge">15 SCREENS · 375 × 812</div>
+      </div>
+      <div class="wall">
+        <figure class="ph"><img src="assets/ui/splash.jpg" alt="引导页"/><figcaption>引导 · 开始逛</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/home.jpg" alt="首页"/><figcaption>首页 · 风起的时候</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/spots.jpg" alt="景点列表"/><figcaption>景点 · 六个去处</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/spot-erhai.jpg" alt="洱海详情"/><figcaption>景点详情 · 洱海</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/culture.jpg" alt="文化页"/><figcaption>文化 · 先看懂一件</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/culture-dye.jpg" alt="扎染详情"/><figcaption>文化详情 · 扎染</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/craft-v6.png" alt="文创页"/><figcaption>文创 · 怎么带走</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/exhibit.jpg" alt="云上特展"/><figcaption>云上特展</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/search.jpg" alt="搜索"/><figcaption>搜索</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/fav-list.jpg" alt="收藏"/><figcaption>收藏夹</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/trip-added.jpg" alt="行程"/><figcaption>行程单 · 已加入</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/mine.jpg" alt="旅人"/><figcaption>旅人 · 我的</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/loading.jpg" alt="加载"/><figcaption>加载 · 瓦猫</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/empty.jpg" alt="空状态"/><figcaption>空状态</figcaption></figure>
+        <figure class="ph"><img src="assets/ui/fail.jpg" alt="失败"/><figcaption>异常态</figcaption></figure>
+      </div>
+      <div class="wall-note">同一套色板 · 同一套卡片 · 同一套呼吸 —— 这就是规范在多屏上的复利</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 10 核心拆解 ========== -->
+<section id="anatomy">
+  <div class="wrap">
+    <div class="kicker rev"><b>09 / ANATOMY</b>核心页面拆解</div>
+    <h2 class="sec rev d1">每一屏，都在解题</h2>
+
+    <!-- 首页 -->
+    <div class="ana">
+      <div class="rev">
+        <div class="device">
+          <img src="assets/ui/home.jpg" alt="首页"/>
+          <img class="float-crop fc-tr" src="assets/ui/home-hook.png" alt="首页顶部细节"/>
+        </div>
+      </div>
+      <div class="ana-body rev d1">
+        <div class="no">A / HOME</div>
+        <h3>首页 · 三秒定调</h3>
+        <div class="en">FIRST IMPRESSION IN 3 SECONDS</div>
+        <p>用户打开小程序的前三秒，决定他是否愿意继续。首页不堆功能，先给「气质」，再给「路」。</p>
+        <div class="psr">
+          <div><b>痛点</b><p>文旅信息分散，用户不知道「先看什么、这条 App 是干嘛的」。</p></div>
+          <div><b>手段</b><p>竖排笔触标题「风起的时候」定调；景点 / 文化 / 文创三卡分发；云上特展做气质位；「值得先看」承载效率。</p></div>
+          <div><b>结果</b><p>3 秒读懂产品定位，2 次点击内进入核心内容；文化感与效率各得其所。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 文化页 -->
+    <div class="ana-dark rev">
+      <div class="device">
+        <img src="assets/ui/culture.jpg" alt="文化页"/>
+        <img class="float-crop fc-bl" src="assets/ui/culture-dye-art.png" alt="扎染氛围细节" style="border-color:#173b63"/>
+      </div>
+      <div class="ana-body">
+        <div class="no" style="color:#8fc3e6">B / CULTURE</div>
+        <h3>文化页 · 先看懂一件</h3>
+        <div class="en" style="color:rgba(255,255,255,.45)">MAKE CULTURE BROWSABLE</div>
+        <p>文化内容最容易做成「海报」——好看，但进不了产品。文化页的任务是让文化可浏览、可加入行程。</p>
+        <div class="psr">
+          <div><b>痛点</b><p>文化介绍容易停在氛围感，用户看完不知道去哪体验、和行程有什么关系。</p></div>
+          <div><b>手段</b><p>「先看懂一件 · 扎染」单点深读；「在哪里遇见」横滑地点条；标签筛选（工艺/民俗/饮食）衔接景点与文创。</p></div>
+          <div><b>结果</b><p>文化条目可一键「加入行程」，阅读动线自然过渡到「去喜洲 / 周城」的行动。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 文创页 -->
+    <div class="ana">
+      <div class="rev">
+        <div class="device">
+          <img src="assets/ui/craft-v6.png" alt="文创页"/>
+          <img class="float-crop fc-tr" src="assets/ui/craft-art.png" alt="扎染方巾细节"/>
+        </div>
+      </div>
+      <div class="ana-body rev d1">
+        <div class="no">C / CRAFT</div>
+        <h3>文创页 · 怎么带走</h3>
+        <div class="en">FROM SEEING TO TAKING</div>
+        <p>文创不是货架，是「把大理带回家」的方式。按身体动作组织商品，而不是按品类。</p>
+        <div class="psr">
+          <div><b>痛点</b><p>商品平铺像电商，与旅途叙事割裂，用户难以建立「带走什么」的心理模型。</p></div>
+          <div><b>手段</b><p>「进包 / 掌心 / 坐下」三种携带方式做分类骨架；单品卡讲手作细节（对光能看见针脚）。</p></div>
+          <div><b>结果</b><p>浏览即叙事：四件东西、三种位置，看完就知道哪件适合自己。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 11 符号 → UI ========== -->
+<section id="symbol">
+  <div class="wrap">
+    <div class="kicker rev"><b>10 / SYMBOL</b>文化符号 → UI</div>
+    <h2 class="sec rev d1">符号如何走进界面</h2>
+    <div class="sym-row rev">
+      <div class="sym-src">
+        <div class="pic"><svg viewBox="0 0 64 64" fill="none"><path d="M18 26L22 10l10 14 10-14 4 16" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 30c0 12 5 22 12 22s12-10 12-22c0-6-4-10-12-10s-12 4-12 10z" stroke="currentColor" stroke-width="2.4"/><circle cx="27" cy="28" r="1.6" fill="currentColor"/><circle cx="37" cy="28" r="1.6" fill="currentColor"/><path d="M30 33h4M24 48c4 4 12 4 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <span>瓦 猫</span>
+      </div>
+      <div class="sym-map">
+        <div class="smap"><b>品牌 Logo</b><p>引导页与「旅人」头像处的记忆点，线条化保持克制。</p></div>
+        <div class="smap"><b>加载 / 空状态</b><p>等待与空白时的情绪缓冲，替代冷冰冰的转圈。</p></div>
+        <div class="smap"><b>印章式点缀</b><p>瓦猫朱色小印，用在完成、收藏等确认时刻。</p></div>
+      </div>
+    </div>
+    <div class="sym-row rev">
+      <div class="sym-src">
+        <div class="pic"><img src="assets/craft-dye.jpg" alt="扎染"/></div>
+        <span>扎 染</span>
+      </div>
+      <div class="sym-map">
+        <div class="smap"><b>全案色彩母题</b><p>蓝白浓淡即信息层级，是整套设计系统的来源。</p></div>
+        <div class="smap"><b>氛围背景层</b><p>首页与文化页的沉浸底图，低饱和处理不抢前景。</p></div>
+        <div class="smap"><b>内容主角</b><p>「先看懂一件 · 扎染」把工艺本身做成可深读的内容。</p></div>
+      </div>
+    </div>
+    <div class="sym-row rev">
+      <div class="sym-src">
+        <div class="pic"><img src="assets/culture-temple.jpg" alt="屋檐"/></div>
+        <span>屋 檐</span>
+      </div>
+      <div class="sym-map">
+        <div class="smap"><b>分割语言</b><p>章节与卡片的起伏轮廓，取自屋檐的瓦当曲线。</p></div>
+        <div class="smap"><b>曲线圆角</b><p>大圆角卡片 = 屋檐的柔和转角，统一造型逻辑。</p></div>
+        <div class="smap"><b>场景图选择</b><p>景点配图统一带檐角/院落视角，强化在地感。</p></div>
+      </div>
+    </div>
+    <div class="sym-row rev" style="border-bottom:none">
+      <div class="sym-src">
+        <div class="pic"><img src="assets/craft-tea.jpg" alt="茶与火塘"/></div>
+        <span>茶 · 火塘</span>
+      </div>
+      <div class="sym-map">
+        <div class="smap"><b>分类图标</b><p>文创「坐下 · 小院慢坐」与文化的民俗/饮食类目。</p></div>
+        <div class="smap"><b>温度感文案</b><p>「三道茶」「火塘夜话」式的命名，代替功能化标题。</p></div>
+        <div class="smap"><b>生活化配图</b><p>手作器物入镜，让商品回到使用场景。</p></div>
+      </div>
+    </div>
+    <div class="sym-principle rev">原则：<em>符号服务功能，不抢内容</em>；造型逻辑统一，出现即有意义。</div>
+  </div>
+</section>
+
+<!-- ========== 12 交互原型 ========== -->
+<section id="proto" class="dark">
+  <div class="wrap">
+    <div class="kicker rev"><b>11 / PROTOTYPE</b>可交互原型</div>
+    <div class="proto-grid">
+      <div class="proto-frame rev">
+        <iframe src="prototype/index.html" title="大理小程序可交互原型" loading="lazy"></iframe>
+      </div>
+      <div class="proto-info rev d1">
+        <h3>它不只是贴图，能真的逛</h3>
+        <div class="en">INTERACTIVE PROTOTYPE · CLICKABLE</div>
+        <p>左侧是内嵌的完整原型，也可点击下方按钮<b style="color:#fff;font-weight:500">全屏进入</b>：从「开始逛」进去，可以真实完成一条主路径——看景点、读懂扎染、把方巾放进背包、把洱海加进行程。</p>
+        <div class="try">
+          <span>① 点「开始逛」</span><span>② 景点 → 加入行程</span><span>③ 文化 → 扎染深读</span><span>④ 文创 → 进包 / 掌心 / 坐下</span><span>⑤ 旅人 → 看行程单</span>
+        </div>
+        <div class="proto-cta">
+          <button class="proto-btn" id="openProto" type="button">在页面内全屏体验原型</button>
+          <a class="proto-link" href="prototype/index.html" target="_blank" rel="noopener">或在新窗口打开 ↗</a>
+        </div>
+        <div class="proto-tip">原型为纯静态页面（<span style="font-family:var(--latin)">prototype/index.html</span>），无需联网后端即可交互</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 全屏原型模式 -->
+<div id="protoModal" aria-hidden="true" role="dialog" aria-label="大理小程序可交互原型">
+  <div class="pm-bar">
+    <div class="tt">大理 · 风起的时候<small>DALI MINI PROGRAM · INTERACTIVE PROTOTYPE</small></div>
+    <div class="acts">
+      <a href="prototype/index.html" target="_blank" rel="noopener">新窗口打开 ↗</a>
+      <button type="button" id="closeProto">关闭 ✕</button>
+    </div>
+  </div>
+  <div class="pm-stage">
+    <div class="pm-phone"><iframe id="pmFrame" data-src="prototype/index.html" title="大理小程序原型" src="about:blank"></iframe></div>
+    <div class="pm-side">
+      <b>从这里开始逛</b>
+      <ol>
+        <li>点「开始逛」进入首页</li>
+        <li>首页 → 景点：看六个去处</li>
+        <li>景点详情 → 加入行程</li>
+        <li>文化 → 扎染：先看懂一件</li>
+        <li>文创 → 进包 / 掌心 / 坐下</li>
+        <li>旅人 → 查看行程单</li>
+      </ol>
+      <p style="margin-top:16px;opacity:.6">按 Esc 或右上角「关闭」退出</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 13 收束 ========== -->
+<section id="contact">
+  <div class="wrap" style="text-align:center">
+    <div class="kicker rev" style="justify-content:center"><b>12 / ENDING</b>结果与反思</div>
+    <div class="end-quote rev d1">布还很长，<em>慢慢染。</em></div>
+  </div>
+  <div class="wrap">
+    <div class="reflect">
+      <div class="rcard rev"><b><i>R1</i>结果</b><p>完成从文化符号提取 → 视觉系统 → 20+ 界面 → 可交互原型的闭环；多屏视觉一致，符号资产真实进入界面与状态流。</p></div>
+      <div class="rcard rev d1"><b><i>R2</i>已知不足</b><p>搜索与筛选的深度还浅；无障碍对比、深色模式未做系统检查；文案的手感可以再统一一轮。</p></div>
+      <div class="rcard rev d2"><b><i>R3</i>下一步</b><p>引入真实用户测试验证首页信息优先级；补齐加载/错误/空状态的动效细节；沉淀组件库便于二次开发。</p></div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="f-grid">
+        <div class="f-name">傅 怡<small>把文化符号，做成可落地的界面</small></div>
+        <div class="f-info">
+          <b>UI / 视觉设计 · 应届实习</b><br/>
+          13177850203 · 3528544024@qq.com<br/>
+          深圳 · 简历与源文件可索取
+        </div>
+      </div>
+      <div class="f-bottom">
+        <span>DALI MINI PROGRAM · PORTFOLIO 2026</span>
+        <span>INDIGO SYSTEM / ZCOOL XIAOWEI / MA SHAN ZHENG / CORMORANT</span>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<script>
+// 进度条
+const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+// 侧边导航
+const secs=[['cover','封面'],['card','名片'],['claim','主张'],['color','配色'],['type','字体'],['layout','版式'],['goals','目标'],['flow','架构'],['screens','界面'],['anatomy','拆解'],['symbol','符号'],['proto','原型'],['contact','联系']];
+const dots=document.getElementById('dots');
+secs.forEach(([id,label])=>{const a=document.createElement('a');a.href='#'+id;a.innerHTML='<i>'+label+'</i>';a.dataset.for=id;dots.appendChild(a)});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('#dots a').forEach(a=>a.classList.toggle('on',a.dataset.for===e.target.id))}})},{rootMargin:'-45% 0px -45% 0px'});
+secs.forEach(([id])=>{const el=document.getElementById(id);if(el)io.observe(el)});
+// 滚动显现
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+// ---- 全屏原型模式 ----
+const modal=document.getElementById('protoModal');
+const pmFrame=document.getElementById('pmFrame');
+const openBtn=document.getElementById('openProto');
+const closeBtn=document.getElementById('closeProto');
+function openProto(){
+  if(pmFrame.getAttribute('src')==='about:blank'){pmFrame.setAttribute('src',pmFrame.dataset.src)}
+  modal.classList.add('on');modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeProto(){
+  modal.classList.remove('on');modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+if(openBtn)openBtn.addEventListener('click',openProto);
+if(closeBtn)closeBtn.addEventListener('click',closeProto);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('on'))closeProto()});
+</script>
+</body>
+</html>

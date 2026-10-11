@@ -1,0 +1,20 @@
+/* 本地内嵌字体子集 —— 由项目用字子集化生成，保证 HTML / PDF / 离线预览 字体一致
+   字体来源：Google Fonts（OFL 许可） · ZCOOL XiaoWei / Ma Shan Zheng / Noto Serif SC / Noto Sans SC / Cormorant Garamond */
+
+@font-face{font-family:'ZCOOL XiaoWei';font-style:normal;font-weight:400;font-display:block;src:url(zcoolxiaowei-400.woff2) format('woff2')}
+
+@font-face{font-family:'Ma Shan Zheng';font-style:normal;font-weight:400;font-display:block;src:url(mashanzheng-400.woff2) format('woff2')}
+
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:500;font-display:block;src:url(notoserifsc-500.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:600;font-display:block;src:url(notoserifsc-600.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:700;font-display:block;src:url(notoserifsc-700.woff2) format('woff2')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:900;font-display:block;src:url(notoserifsc-900.woff2) format('woff2')}
+
+@font-face{font-family:'Noto Sans SC';font-style:normal;font-weight:300;font-display:block;src:url(notosanssc-300.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans SC';font-style:normal;font-weight:400;font-display:block;src:url(notosanssc-400.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans SC';font-style:normal;font-weight:500;font-display:block;src:url(notosanssc-500.woff2) format('woff2')}
+@font-face{font-family:'Noto Sans SC';font-style:normal;font-weight:700;font-display:block;src:url(notosanssc-700.woff2) format('woff2')}
+
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:block;src:url(cormorantgaramond-500.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:block;src:url(cormorantgaramond-600.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:block;src:url(cormorantgaramond-i500.woff2) format('woff2')}

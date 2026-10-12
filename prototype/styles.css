@@ -105,6 +105,9 @@ body {
 }
 .screen.active { display: block; }
 .screen.no-tab { padding-bottom: 24px; }
+/* 手机样机内部不出现系统滚动条（首页等内容可滚，滚动条会破坏样机观感） */
+.screen { scrollbar-width: none; }
+.screen::-webkit-scrollbar { display: none; }
 
 .nav {
   height: 52px;
@@ -593,10 +596,20 @@ body {
   --elev-2-dark: 0 2px 4px rgba(10,30,55,.14), 0 12px 24px -8px rgba(10,30,55,.42);
   --elev-3: 0 3px 8px rgba(42,134,200,.35), 0 1px 1px rgba(42,134,200,.2);
 
-  overflow: hidden;
+  /* 首页内容（海报 410 + 内容板）比手机高时——窄窗口内嵌的小手机、
+     全屏弹窗、以及小屏设备——必须能上滑，否则底部推荐带被裁掉却滚不动 */
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-bottom: 74px;
   background: var(--home-paper);
 }
+
+/* 首页特有：海报要满版压在状态栏与导航之下。
+   改用 sticky 把这两条钉在顶部，海报再用负 margin 收回它们占的 96px，
+   静止时的观感与原来完全一致；向上滑动时状态栏/导航留驻、海报从下面滑过 */
+#home > .status { position: sticky !important; top: 0; }
+#home > .home-nav { position: sticky; top: 44px; }
+#home > .home-poster { margin-top: -96px; }
 
 /* 导航：字标用毛笔字，不加底色，直接压在海报上 */
 /* 导航：字标用毛笔字，墨色直接写在宣纸上 */

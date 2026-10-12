@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>大理 · 文化信息体验</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="../assets/fonts/fonts.css" data-font-local="1" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <div class="stage">
@@ -189,6 +186,11 @@
           <button type="button" data-tag="古镇">古镇</button>
           <button type="button" data-tag="第一次">第一次</button>
         </div>
+        <button class="ai-inline" type="button" data-ai-inline="spots">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 13.7 9l4.8 1.7-4.8 1.7L12 17.2l-1.7-4.8L5.5 10.7 10.3 9z"/><path d="M18.4 16.2 19.2 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" opacity=".62"/></svg></i>
+          <span>让 AI 从这一页里挑一条能走完的线</span>
+          <em>去问</em>
+        </button>
         <p class="list-note">点右下角加号收进行程，看中就收</p>
         <div class="place-list" id="spot-list">
           <article class="place" data-zone="east" data-tags="半日 湖岸 第一次">
@@ -343,6 +345,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-erhai">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="洱海">加入想去</button>
         </div>
       </section>
@@ -395,6 +398,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-xizhou">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="喜洲古镇">加入想去</button>
         </div>
       </section>
@@ -447,6 +451,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-shuanglang">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="双廊">加入想去</button>
         </div>
       </section>
@@ -499,6 +504,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-cangshan">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="苍山">加入想去</button>
         </div>
       </section>
@@ -551,6 +557,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-pagoda">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="崇圣寺三塔">加入想去</button>
         </div>
       </section>
@@ -595,6 +602,7 @@
           </section>
         </div>
         <div class="spot-dock">
+          <button class="btn-ghost-dock" type="button" data-add="spot-bridge">加入行程</button>
           <button class="btn-primary add-fav" type="button" data-fav="湖上拱桥">加入想去</button>
         </div>
       </section>
@@ -641,6 +649,11 @@
           <button type="button" data-tag="民俗">民俗</button>
           <button type="button" data-tag="饮食">饮食</button>
         </div>
+        <button class="ai-inline" type="button" data-ai-inline="culture">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 13.7 9l4.8 1.7-4.8 1.7L12 17.2l-1.7-4.8L5.5 10.7 10.3 9z"/><path d="M18.4 16.2 19.2 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" opacity=".62"/></svg></i>
+          <span>让 AI 从这一页里挑一条能走完的线</span>
+          <em>去问</em>
+        </button>
         <p class="list-note">点加号收进体验单，再按地点排</p>
         <div class="cult-list">
           <article class="cult" data-kind="craft" data-tags="工艺">
@@ -1059,7 +1072,41 @@
       </section>
 
       <!-- S08 我的 -->
-      <section class="screen" id="mine" data-name="19 我的">
+      <!-- S-AI 问问：行程顾问 -->
+      <section class="screen ai-page" id="ai" data-name="19 问问">
+        <div class="status">9:41<span>▮▮▮</span></div>
+        <header class="nav ai-nav">
+          <div class="nav-title"><em>Ask</em><b>问问</b></div>
+          <button class="ai-clear" type="button" id="ai-clear">清空</button>
+        </header>
+
+        <div class="ai-stream" id="ai-stream">
+          <!-- 空态：给出真实问题，而不是「我能帮你什么」这种空话 -->
+          <div class="ai-empty" id="ai-empty">
+            <div class="ai-empty-mark"><img src="./assets/wamao.svg" alt="" /></div>
+            <b>说说你想怎么逛</b>
+            <span>时间、想看什么、从哪出发都好使。它会给你一条排得开的路线。</span>
+            <div class="ai-suggest" id="ai-suggest">
+              <button type="button" data-ask="我只有一天半，想看湖也想摸一次布，住古城，怎么排？">一天半，想看湖也想摸布</button>
+              <button type="button" data-ask="带爸妈来，走不动太多路，两天怎么安排？">带爸妈，走不动太多路</button>
+              <button type="button" data-ask="第一次来大理，半天时间，只想看最值得的一处。">第一次来，只有半天</button>
+              <button type="button" data-ask="下雨天在大理能干什么？">下雨天能干什么</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-composer">
+          <div class="ai-input-wrap">
+            <textarea id="ai-input" rows="1" placeholder="比如：两天，想看湖、扎染，带小孩" aria-label="向行程顾问提问"></textarea>
+            <button class="ai-send" id="ai-send" type="button" aria-label="发送" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h13"/><path d="m12.5 6.5 5.7 5.5-5.7 5.5"/></svg>
+            </button>
+          </div>
+          <p class="ai-disclaimer">原型内的示例回答 · 不是在线模型</p>
+        </div>
+      </section>
+
+      <section class="screen" id="mine" data-name="20 我的">
         <div class="status light" style="position:absolute;left:0;right:0;z-index:6;color:#fff">9:41<span>▮▮▮</span></div>
         <div class="mine-hero">
           <img src="./assets/hero-erhai-aerial.jpg" alt="" />
@@ -1095,7 +1142,7 @@
       </section>
 
       <!-- S09 空状态 -->
-      <section class="screen no-tab" id="empty" data-name="20 想去·空">
+      <section class="screen no-tab" id="empty" data-name="21 想去·空">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1111,7 +1158,7 @@
         </div>
       </section>
 
-      <section class="screen no-tab" id="fav-list" data-name="21 想去">
+      <section class="screen no-tab" id="fav-list" data-name="22 想去">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1121,7 +1168,7 @@
         <div class="list" id="fav-items"></div>
       </section>
 
-      <section class="screen no-tab" id="history" data-name="22 足迹">
+      <section class="screen no-tab" id="history" data-name="23 足迹">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1131,7 +1178,7 @@
         <div class="list" id="history-list"></div>
       </section>
 
-      <section class="screen no-tab" id="about" data-name="23 关于">
+      <section class="screen no-tab" id="about" data-name="24 关于">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1152,7 +1199,7 @@
       </section>
 
       <!-- S10 加载 -->
-      <section class="screen" id="loading" data-name="24 加载">
+      <section class="screen" id="loading" data-name="25 加载">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1169,10 +1216,13 @@
           <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
           <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
           <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
+          <div class="skel"><i></i><div class="grow"><b></b><em></em></div></div>
         </div>
+        <p class="load-note">正在加载景点…</p>
+        <button class="load-fail-link" type="button" data-go="fail">网络不稳，看看失败态</button>
       </section>
 
-      <section class="screen" id="fail" data-name="25 失败">
+      <section class="screen" id="fail" data-name="26 失败">
         <div class="status">9:41<span>▮▮▮</span></div>
         <header class="nav">
           <button class="back" type="button" data-back="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 7 12l7.5 6.5"/><path d="M8 12h10" opacity=".35"/></svg></button>
@@ -1204,6 +1254,11 @@
             <button type="button" id="trip-close">关闭</button>
           </header>
           <div class="trip-picks" id="trip-picks"></div>
+          <button class="ai-inline ai-inline-sheet" type="button" data-ai-inline="trip">
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 13.7 9l4.8 1.7-4.8 1.7L12 17.2l-1.7-4.8L5.5 10.7 10.3 9z"/><path d="M18.4 16.2 19.2 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" opacity=".62"/></svg></i>
+            <span>让 AI 照我收进来的这几处排</span>
+            <em>去问</em>
+          </button>
           <button class="trip-field" id="trip-open-date" type="button">
             <span>出发日期</span>
             <b id="trip-date-label">10月5日 周一</b>
@@ -1274,6 +1329,7 @@
       <nav class="tabbar" id="tabbar">
         <button class="on" type="button" data-go="home"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 13.2 12 5.6l8.5 7.6"/><path d="M6.6 13.2V19h10.8v-5.8"/><path d="m10.2 6.2 1.8-2.8 1.8 2.8"/></svg></i><b>首页</b></button>
         <button type="button" data-go="spots"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round"><path d="m2.8 15.6 4.8-7.4 3.2 4.2 3.8-6.2 6.6 9.4"/><path d="M3.2 18.6c2.4-1.5 5-1 8.8-1s6.4-.5 8.8 1"/><circle cx="17.2" cy="8.2" r="1.1"/></svg></i><b>景点</b></button>
+        <button class="tab-ai" type="button" data-go="ai"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 13.7 9l4.8 1.7-4.8 1.7L12 17.2l-1.7-4.8L5.5 10.7 10.3 9z"/><path d="M18.4 16.2 19.2 18l1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" opacity=".62"/><path d="M5.6 3.6 6.2 5l1.4.6-1.4.6-.6 1.4-.6-1.4L3.6 5.6 5 5z" opacity=".42"/></svg></i><b>问问</b></button>
         <button type="button" data-go="culture"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><path d="M16.8 7.2a6.6 6.6 0 1 1-3.2 11.4 4.6 4.6 0 0 1-1.4-7.6 2.6 2.6 0 0 1 1.8 3.8"/><path d="M9.2 8.4c1.6-1.2 3.6-1.5 5.2-.6"/></svg></i><b>文化</b></button>
         <button type="button" data-go="mine"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round"><circle cx="12" cy="7.2" r="2.3"/><path d="M8 19.2c.6-4 2.2-6 4-6s3.4 2 4 6"/><path d="M4.5 20.4c2.6-2 5.4-2.6 7.5-2.6s4.9.6 7.5 2.6"/></svg></i><b>我的</b></button>
       </nav>

@@ -810,7 +810,7 @@ body {
   display: flex;
   gap: 10px;
   margin: 0 -16px;
-  padding: 6px 16px 26px; /* 给特展卡的影子留出不被裁掉的空间 */
+  padding: 6px 16px 26px; /* 给卡片阴影留出不被裁掉的空间 */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -860,43 +860,7 @@ body {
   color: rgba(23,59,99,.55);
   font-size: 10px;
 }
-/* 特展卡：整张水墨铺底，毛笔字标题，和实景卡区分开 */
-#home .strip-card.is-exhibit {
-  width: 164px;
-  background: var(--home-ink);
-  box-shadow: var(--elev-2-dark);
-}
-#home .strip-card.is-exhibit img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 48%;
-  filter: brightness(.92) saturate(1.06);
-}
-#home .strip-card.is-exhibit span {
-  position: absolute;
-  inset: auto 0 0;
-  height: auto;
-  padding: 14px 12px 12px;
-  color: #fff;
-  background: linear-gradient(180deg, transparent, rgba(10,30,55,.88));
-  border: 0;
-}
-#home .strip-card.is-exhibit em {
-  margin-bottom: 4px;
-  color: rgba(255,255,255,.75);
-  font-style: normal;
-  font-size: 10px;
-  letter-spacing: .24em;
-}
-#home .strip-card.is-exhibit b {
-  font-family: var(--home-brush);
-  font-size: 21px;
-  font-weight: 400;
-  letter-spacing: .1em;
-}
+/* 云上大理城＝特展入口，但沿用实景卡同一套版式：上图下文，保持推荐带视觉统一 */
 
 /* ── 景点列表 / 详情 ────────────────────────────────────────
    列表回答「排不排进今天」；详情回答「值不值得去、怎么逛」。 */
